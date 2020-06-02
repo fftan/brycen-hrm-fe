@@ -1,0 +1,25 @@
+<div nz-row>
+    <h2 nz-col nzSpan="12">Danh sách các skill</h2>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/add-skill"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new skill</a></button>
+</div>
+<hr />
+<nz-table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let skill of skills">
+            <td>{{ skill.id }}</td>
+            <td>{{ skill.name }}</td>
+            <td>
+                <a>update</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a>Disable</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

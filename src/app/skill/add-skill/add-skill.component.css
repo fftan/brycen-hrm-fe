@@ -1,0 +1,32 @@
+form {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+input {
+    margin-bottom: 25px;
+    border: 1px solid #aaaaaa;
+    outline: none;
+    border-radius: 2px;
+    padding: 4px 20px;
+}
+
+input:hover {
+    border: 1px solid #0984e3;
+}
+
+span {
+    color: red;
+}
+
+p {
+    color: red;
+    margin-top: -10px;
+}
+
+button {
+    display: flex;
+    align-self: center;
+}

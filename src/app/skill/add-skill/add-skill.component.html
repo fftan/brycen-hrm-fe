@@ -1,0 +1,30 @@
+<h2>Add new skill</h2>
+<hr />
+<div nz-row nzAlign="middle" nzJustify="space-around">
+    <div nz-col nzXXL="8" nzXL="8" nzLg="12" nzMd="12" nzSM="18" nzXs="18" style="margin: 0 auto">
+        <form>
+            <div nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Name skill:</label>
+                <input type="text" name="name" (keyup)="onChangeName($event)" nz-col nzSpan="18" />
+            </div>
+
+            <div *ngIf="isValidName.length > 0" nz-row>
+                <p nzOffset="6" nz-col>{{isValidName}}</p>
+            </div>
+
+            <!-- <div nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Level:</label>
+                <input type="text" name="level" (keyup)="onChangeLevel($event)" nz-col nzSpan="18" />
+            </div>
+            
+            <div *ngIf="isValidLevel.length > 0" nz-row>
+                <p nzOffset="6" nz-col>{{isValidLevel}}</p>
+            </div> -->
+
+            <div>
+                <button (click)="addSkill(nameValue, levelValue)" nz-button nzType="primary" nz-col nzSpan="6"
+                    nzOffset="6">save</button>
+            </div>
+        </form>
+    </div>
+</div>
