@@ -1,4 +1,3 @@
-import { UpdateSkillComponent } from './skill/update-skill/update-skill.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -21,10 +20,12 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { IconsProviderModule } from './icons-provider.module';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 // Components
 import { AppComponent } from './app.component';
-import { DepartmentComponent } from './department/department.component';
+import { DepartmentComponent } from './department/get/department.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { TaskComponent } from './task/task.component';
@@ -35,6 +36,9 @@ import { PermissionComponent } from './permission/permission.component';
 import { EmployeeComponent } from './employee/get-employee/employee.component';
 import { AddSkillComponent } from './skill/add-skill/add-skill.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { CreateComponent } from './department/create/create.component';
+import { UpdateComponent } from './department/update/update.component';
+import { UpdateSkillComponent } from './skill/update-skill/update-skill.component';
 
 
 registerLocaleData(en);
@@ -53,7 +57,9 @@ registerLocaleData(en);
     EmployeeComponent,
     AddSkillComponent,
     UpdateSkillComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    CreateComponent,
+    UpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -71,6 +77,8 @@ registerLocaleData(en);
     NzGridModule,
     NzDatePickerModule,
     NzSelectModule,
+    NzDropDownModule,
+    NzFormModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

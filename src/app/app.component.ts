@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   isCollapsed = false;
+  log(): void {
+    console.log('click dropdown button');
+  }
+  
 }

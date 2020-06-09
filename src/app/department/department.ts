@@ -1,6 +1,7 @@
 export interface Department {
     id: number;
     name: string;
+    active: Boolean;
     start_day: Date;
-    active: boolean;
+    persion_id: number;
 }

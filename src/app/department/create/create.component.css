@@ -6,7 +6,6 @@ form {
 }
 
 input {
-    margin-bottom: 10px;
     border: 1px solid #aaaaaa;
     outline: none;
     border-radius: 2px;
@@ -30,8 +29,4 @@ button {
     display: flex;
     align-self: center;
     margin-top: 20px;
-}
-
-.select-box {
-    margin: 20px 0;
 }

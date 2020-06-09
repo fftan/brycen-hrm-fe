@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 // Components
+import { Skill } from './../../skill/skill';
 import { Employee } from '../employee';
-import { Role } from './../../role/role';
-import { Status } from './../../status/status';
+import { Role } from '../../role/role';
+import { Status } from '../../status/status';
 import { EmployeeService } from './../employee.service';
 import { Department } from './../../department/department';
 
@@ -21,6 +22,19 @@ export class AddEmployeeComponent implements OnInit {
   roles: Role[];
 
   dateFormat = 'yyyy/MM/dd';
+
+  validateResult = '';
+
+  validateValue = {
+    username: '',
+    password: '',
+    full_name: '',
+    id_card: '',
+    gender: '',
+    department: '',
+    status: '',
+    role: '',
+  }
 
   data = {
     username: '',
@@ -42,16 +56,6 @@ export class AddEmployeeComponent implements OnInit {
       id: 0
     },
   }
-
-  arrData = [
-    { name: 'username', value: '1' },
-    { name: 'full_name', value: '2' },
-    { name: 'full_name', value: '3' },
-    { name: 'full_name', value: '4' },
-    { name: 'full_name', value: '' },
-    { name: 'full_name', value: '' },
-    { name: 'full_name', value: '' },
-  ]
 
   constructor(private empService: EmployeeService) { }
 
@@ -108,17 +112,80 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
+  checkTypeField = (data) => {
+    console.log("AddEmployeeComponent -> checkTypeField -> data", data)
+
+    if (!data.username) {
+      this.validateValue.username = 'Please enter username';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (!data.password) {
+      this.validateValue.password = 'Please enter password';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (!data.full_name) {
+      this.validateValue.full_name = 'Please enter full name';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (!data.id_card) {
+      this.validateValue.id_card = 'Please enter  id card';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (!data.gender) {
+      this.validateValue.gender = 'Please enter gender';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (data.department.id === 0) {
+      this.validateValue.department = 'Please choose department';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (data.status.id === 0) {
+      this.validateValue.status = 'Please choose status';
+      this.validateResult = 'error';
+      return;
+    }
+
+    if (data.role.id === 0) {
+      this.validateValue.role = 'Please choose role';
+      this.validateResult = 'error';
+      return;
+    }
+    this.validateValue.username = '';
+    this.validateValue.password = '';
+    this.validateValue.full_name = '';
+    this.validateValue.id_card = '';
+    this.validateValue.gender = '';
+    this.validateValue.department = '';
+    this.validateValue.status = '';
+    this.validateValue.role = '';
+    this.validateResult = '';
+  }
+
   addEmployee = (data) => {
+    console.log("AddEmployeeComponent -> addEmployee -> data", data)
+    this.checkTypeField(data);
     this.empService.addEmployee(data as Employee).subscribe(
       emp => alert('successfully!'),
       err => {
-      console.log("AddEmployeeComponent -> addEmployee -> err", err)
+        console.log("AddEmployeeComponent -> addEmployee -> err", err)
       }
     )
   }
 
   // Relationship method
-  getDepartments() {
+  getDepartments = () => {
     this.empService.getDepartments().subscribe(
       dep => {
         this.departments = dep;
@@ -130,7 +197,7 @@ export class AddEmployeeComponent implements OnInit {
     )
   }
 
-  getStatus() {
+  getStatus = () => {
     this.empService.getStatus().subscribe(
       status => {
         this.status = status;
@@ -142,7 +209,7 @@ export class AddEmployeeComponent implements OnInit {
     )
   }
 
-  getRoles() {
+  getRoles = () => {
     this.empService.getRoles().subscribe(
       roles => {
         this.roles = roles;
@@ -153,5 +220,4 @@ export class AddEmployeeComponent implements OnInit {
       }
     )
   }
-
 }

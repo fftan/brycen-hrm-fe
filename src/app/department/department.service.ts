@@ -26,6 +26,10 @@ export class DepartmentService {
         );
     }
 
+    addDepartment(data): Observable<Department[]> {
+        return this.http.post<Department[]>(`${this.departmentUrl}/create`, data, this.httpOptions);
+    }
+
     // catch error, show message
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

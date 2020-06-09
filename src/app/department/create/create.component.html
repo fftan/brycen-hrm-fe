@@ -1,0 +1,44 @@
+<h2>Add new department</h2>
+<hr />
+<div nz-row nzAlign="middle" nzJustify="space-around">
+    <div nz-col nzXXL="8" nzXL="8" nzLg="12" nzMd="12" nzSM="18" nzXs="18" style="margin: 0 auto">
+        <form nz-form>
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Name:</label>
+                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
+                    [(nzErrorTip)]="validateValue.name">
+                    <input nz-input type="text" name="name" (keyup)="onChangeValue($event)" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <div nz-row>
+                <label nz-col nzSpan="6">start_day:</label>
+                <nz-date-picker name="start_day" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.start_day" style="margin-bottom: 24px;">
+                </nz-date-picker>
+            </div>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Active:</label>
+                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
+                    [(nzErrorTip)]="validateValue.active">
+                    <nz-select name="department" [(ngModel)]="data.active">
+                        <nz-option [nzValue]=1 nzLabel="Hoạt động"></nz-option>
+                        <nz-option [nzValue]=0 nzLabel="Không hoạt động"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>persion_id:</label>
+                <nz-form-control nz-col nzSpan="18">
+                    <input nz-input type="text" name="persion_id" value="4" disabled/>
+                </nz-form-control>
+            </nz-form-item>
+
+            <div>
+                <button (click)="addDepartments(data)" nz-button nzType="primary" nz-col nzSpan="6"
+                    nzOffset="6">save</button>
+            </div>
+        </form>
+    </div>
+</div>

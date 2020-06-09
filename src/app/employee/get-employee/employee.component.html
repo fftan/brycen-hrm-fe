@@ -1,6 +1,6 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">List Employee</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/add-employee"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/add-employee"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
 </div>
 <hr />
 <nz-table>
@@ -14,11 +14,11 @@
             <th>Gender</th>
             <!-- <th>Phone</th>
             <th>Email</th>
-            <th>Position</th> -->
+            <th>Position</th>
             <th>Skill</th>
             <th>Status</th>
+            <th>Role</th> -->
             <th>Department</th>
-            <th>Role</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -32,13 +32,14 @@
             <td>{{ employee.gender ? male : female }}</td>
             <!-- <td>{{ employee.phone }}</td>
             <td>{{ employee.email }}</td>
-            <td>{{ employee.position }}</td> -->
+            <td>{{ employee.position }}</td>
             <td>
                 <tr *ngFor="let skills of employee.employee_skill">{{ skills.skill.name }}</tr>
             </td>
             <td>{{ employee.status.name }}</td>
+            <td>{{ employee.role.name }}</td> -->
+            
             <td>{{ employee.department.name }}</td>
-            <td>{{ employee.role.name }}</td>
             <td>
                 <a>update</a>
                 <nz-divider nzType="vertical"></nz-divider>

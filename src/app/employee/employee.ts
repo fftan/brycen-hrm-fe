@@ -1,5 +1,5 @@
 export class Employee {
-    id: number;
+    id: Number;
     username: string;
     full_name: string;
     id_card: number;
@@ -18,4 +18,5 @@ export class EmpSkill {
     id: number;
     employee: Object;
     skill: Object;
+    level: number;
 }

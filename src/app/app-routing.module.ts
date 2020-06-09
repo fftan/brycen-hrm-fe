@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -6,21 +7,36 @@ import { EmployeeComponent } from './employee/get-employee/employee.component';
 import { UpdateSkillComponent } from './skill/update-skill/update-skill.component';
 import { SkillComponent } from './skill/get-skill/skill.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DepartmentComponent } from './department/department.component';
+import { DepartmentComponent } from './department/get/department.component';
 import { AddSkillComponent } from './skill/add-skill/add-skill.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
+import { ProfileComponent } from './employee/profile/profile.component';
+import { CreateComponent } from './department/create/create.component';
 
 const routes: Routes = [
-  { path: 'department', component: DepartmentComponent },
+  // Department
+  { path: 'brycen/department', component: DepartmentComponent },
+  { path: 'brycen/add-department', component: CreateComponent },
   // Employee
-  { path: 'employee', component: EmployeeComponent },
-  { path: 'add-employee', component: AddEmployeeComponent },
+  { path: 'brycen/employee', component: EmployeeComponent },
+  { path: 'brycen/add-employee', component: AddEmployeeComponent },
+  { path: 'brycen/profile', component: ProfileComponent },
   // Skill
-  { path: 'skill', component: SkillComponent },
-  { path: 'add-skill', component: AddSkillComponent },
-  { path: 'update-skill', component: UpdateSkillComponent },
+  { path: 'brycen/skill', component: SkillComponent },
+  { path: 'brycen/add-skill', component: AddSkillComponent },
+  { path: 'brycen/update-skill', component: UpdateSkillComponent },
+  // page default 
+  { path: '', redirectTo: '/brycen/employee', pathMatch: 'full' },
   // Page not found
   { path: '**', component: PageNotFoundComponent },
+  // {
+  //   path: 'login',
+  //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+  // },
+  // {
+  //   path: 'department', 
+  //   loadChildren: () => import('./department/department.module').then(m => m.DepartmentsModule)
+  // }
 
 ];
 
