@@ -22,6 +22,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 
 // Components
 import { AppComponent } from './app.component';
@@ -79,6 +80,7 @@ registerLocaleData(en);
     NzSelectModule,
     NzDropDownModule,
     NzFormModule,
+    NzPaginationModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

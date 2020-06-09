@@ -1,5 +1,5 @@
 import { tap, catchError } from 'rxjs/operators';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 
 // Components
@@ -20,11 +20,9 @@ export class SkillService {
         private messageService: MessageService
     ) { }
 
-    getSkill(): Observable<Skill[]> {
-        return this.http.get<Skill[]>(this.skillUrl).pipe(
-            tap(_ => this.log('fetched skill')),
-            catchError(this.handleError<Skill[]>('getSkills', []))
-        );
+    getSkill(page, size): Observable<Skill[]> {
+    console.log("SkillService -> page", page)
+        return this.http.get<Skill[]>(`${this.skillUrl}?page=${page}&size=${size}`);
     }
 
     addSkill(skill: Skill): Observable<Skill> {

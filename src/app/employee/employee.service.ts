@@ -24,8 +24,8 @@ export class EmployeeService {
         private http: HttpClient
     ) { }
 
-    getEmployees(): Observable<Employee[]> {
-        return this.http.get<Employee[]>(this.employeeUrl);
+    getEmployees(page, size): Observable<Employee[]> {
+        return this.http.get<Employee[]>(`${this.employeeUrl}?page=${page}&size=${size}`);
     }
 
     addEmployee(emp: Employee): Observable<Employee> {

@@ -16,24 +16,36 @@ export class EmployeeComponent implements OnInit {
 
   empSkills: EmpSkill[];
 
+  totalItem = 0;
+
+  pageIndex = 1;
+
+  pageSize = 10;
+
   male = "Male";
   female = "Female";
 
   constructor(private empService: EmployeeService) { }
 
   ngOnInit(): void {
-    this.getEmployees();
+    this.getEmployees(this.pageIndex, this.pageSize);
   }
 
-  getEmployees = () => {
-    this.empService.getEmployees().subscribe(
-      emp => {
+  getEmployees = (page:any, size:any) => {
+    this.empService.getEmployees(page, size).subscribe(
+      (emp:any) => {
       console.log("EmployeeComponent -> getEmployees -> emp", emp)
-        this.employees = emp;
+        this.employees = emp.content;
+        this.totalItem = emp.totalElements;
       },
       err => {
         console.log("EmployeeComponent -> getEmployees -> err", err);
       }
     )
+  }
+
+  getCurrenIndex = (event:any) => {
+    this.pageIndex = event;
+    this.getEmployees(this.pageIndex, this.pageSize);
   }
 }
