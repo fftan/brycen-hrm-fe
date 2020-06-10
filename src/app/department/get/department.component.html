@@ -3,7 +3,7 @@
   <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/add-department"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new department</a></button>
 </div>
 <hr />
-<nz-table>
+<nz-table style="height: 80%" nzTableLayout="fixed" nzTemplateMode>
   <thead>
     <tr>
       <th>Id</th>
@@ -27,3 +27,4 @@
     </tr>
   </tbody>
 </nz-table>
+<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem" (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>

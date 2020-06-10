@@ -9,8 +9,8 @@ export class Employee {
     email: string;
     position: string;
     skill: number;
-    status: number;
-    department: number;
+    status: string;
+    department: string;
     role: number;
 }
 

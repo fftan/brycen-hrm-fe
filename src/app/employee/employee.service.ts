@@ -11,8 +11,8 @@ import { Role } from '../role/role';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
-    private mainUrl = 'http://localhost:8080/';
-    private employeeUrl = 'http://localhost:8080/employees';
+    private mainUrl = 'http://192.168.4.203:8080/';
+    private employeeUrl = 'http://192.168.4.203:8080/employees';
 
     httpOptions = {
         headers: new HttpHeaders({

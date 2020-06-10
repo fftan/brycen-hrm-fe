@@ -13,8 +13,8 @@ export class CreateComponent implements OnInit {
 
   data = {
     name: '',
-    active: Boolean,
-    start_day: Date,
+    active: 0,
+    start_day: Date.now(),
     persion_id: 4
   }
 

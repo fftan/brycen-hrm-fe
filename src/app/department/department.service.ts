@@ -19,8 +19,8 @@ export class DepartmentService {
         private messageService: MessageService
     ) { }
 
-    getDepartments(): Observable<Department[]> {
-        return this.http.get<Department[]>(this.departmentUrl).pipe(
+    getDepartments(page, size): Observable<Department[]> {
+        return this.http.get<Department[]>(`${this.departmentUrl}?page=${page}&size=${size}`).pipe(
             tap(_ => this.log('fetched department')),
             catchError(this.handleError<Department[]>('getDepartments', []))
         );

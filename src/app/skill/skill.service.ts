@@ -9,7 +9,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SkillService {
-    private skillUrl = 'http://localhost:8080/skills';
+    private skillUrl = 'http://192.168.4.203:8080/skills';
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })

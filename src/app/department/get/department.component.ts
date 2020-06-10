@@ -13,15 +13,27 @@ import { DepartmentService } from '../department.service';
 export class DepartmentComponent implements OnInit {
   departments: Department[];
 
+  totalItem = 0;
+
+  pageIndex = 1;
+
+  pageSize = 10;
+
   constructor(private departmentService: DepartmentService) { }
 
   ngOnInit() {
-    this.getDepartments();
+    this.getDepartments(this.pageIndex, this.pageSize);
   }
 
-  getDepartments(): void {
-    this.departmentService.getDepartments().subscribe(departments => {
-      this.departments = departments;
+  getDepartments(page:any, size:any): void {
+    this.departmentService.getDepartments(page, size).subscribe((departments:any) => {
+      this.departments = departments.content;
+      this.totalItem = departments.totalElements;
     })
+  }
+
+  getCurrenIndex = (event:any) => {
+    this.pageIndex = event;
+    this.getDepartments(this.pageIndex, this.pageSize);
   }
 }
