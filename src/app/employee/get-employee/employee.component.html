@@ -1,49 +1,41 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">List Employee</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/add-employee"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add"><i nz-icon
+                nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
 </div>
 <hr />
-<nz-table style="height: 80%" nzTableLayout="fixed" nzTemplateMode>
+<nz-table style="height: 80%; margin-bottom: 20px;" nzTableLayout="fixed" nzTemplateMode>
     <thead>
         <tr>
             <th>Id</th>
             <th>Full name</th>
             <th>Id card</th>
-            <!-- <th>Birthday</th> -->
             <th>Gender</th>
-            <!-- <th>Phone</th> -->
-            <!-- <th>Email</th> -->
-            <!-- <th>Position</th> -->
             <th>Skill</th>
             <th>Status</th>
-            <!-- <th>Role</th> -->
             <th>Department</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let employee of employees">
-            <td>{{ employee.id }}</td>
+        <tr *ngFor="let employee of employees; let i = index">
+            <td>{{ i + 1 + (pageIndex -1) * pageSize}}</td>
             <td>{{ employee.full_name }}</td>
             <td>{{ employee.id_card }}</td>
-            <!-- <td>{{ employee.birthday }}</td> -->
             <td>{{ employee.gender ? male : female }}</td>
-            <!-- <td>{{ employee.phone }}</td> -->
-            <!-- <td>{{ employee.email }}</td> -->
-            <!-- <td>{{ employee.position }}</td> -->
             <td>
-                <tr *ngFor="let skills of employee.employee_skill">{{ skills.skill.name }}</tr>
-            </td>
-            <td>{{ employee.status }}</td>
-            <!-- <td>{{ employee.role.name }}</td> -->
-            
-            <td>{{ employee.department }}</td>
-            <td>
-                <a>update</a>
-                <nz-divider nzType="vertical"></nz-divider>
-                <a>Disable</a>
-            </td>
+        <tr *ngFor="let skills of employee['employees']">{{ skills.skill.name }}</tr>
+        </td>
+        <td>{{ employee.status }}</td>
+
+        <td>{{ employee.department }}</td>
+        <td>
+            <a>update</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Disable</a>
+        </td>
         </tr>
     </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem" (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem"
+    (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>

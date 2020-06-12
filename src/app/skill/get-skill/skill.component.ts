@@ -15,7 +15,7 @@ export class SkillComponent implements OnInit {
 
   pageIndex = 1;
 
-  pageSize = 10;
+  pageSize = 30;
 
   constructor(private skillService: SkillService) { }
 

@@ -1,0 +1,37 @@
+form {
+    margin: 0 auto;
+    margin-top: 8%;
+    width: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c9e4f5;
+    border: 15px solid #f1f3f5;
+    box-shadow: 0 0 10px #676767;
+    height: 400px;
+    flex-direction: column;
+}
+
+.input_username, .input_password {
+    height: 35px;
+    /* width: 50%; */
+    padding: 5px 10px;
+    border: 1px solid #bbbbbb;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+}
+
+input {
+    border: none;
+    outline: none;
+    margin-left: 15px;
+    width: 90%;
+}
+.row {
+    margin-bottom: 20px;
+}
+
+button {
+    width: 100px;
+}

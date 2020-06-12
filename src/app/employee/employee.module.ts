@@ -1,11 +1,11 @@
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
-import { DepartmentComponent } from './get/department.component';
 import en from '@angular/common/locales/en';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 // Components
-import { DepartmentRoutingModule } from './department-routing.module';
+import { EmployeeRoutingModule } from './employee-routing.module';
+import { EmployeeComponent } from './get-employee/employee.component';
 
 registerLocaleData(en);
 
@@ -14,7 +14,7 @@ registerLocaleData(en);
     ],
     imports: [
     //   BrowserModule,
-    DepartmentRoutingModule,
+    EmployeeRoutingModule,
     //   FormsModule,
     //   HttpClientModule,
     //   BrowserAnimationsModule,
@@ -33,6 +33,6 @@ registerLocaleData(en);
     //   NzPaginationModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: en_US }],
-    bootstrap: [DepartmentComponent]
+    bootstrap: [EmployeeComponent]
   })
-  export class DepartmentModule { }
+  export class EmployeeModule { }

@@ -37,19 +37,19 @@
 
             <div nz-row>
                 <label nz-col nzSpan="6">birthday:</label>
-                <nz-date-picker name="birthday" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.birthday">
+                <nz-date-picker name="birthday" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.emp.birthday">
                 </nz-date-picker>
             </div>
             
             <div nz-row class="select-box">
                 <label nz-col nzSpan="6"><span>* </span>gender:</label>
-                <nz-select name="gender" nz-col nzSpan="18" [(ngModel)]="data.gender">
+                <nz-select name="gender" nz-col nzSpan="18" [(ngModel)]="data.emp.gender">
                     <nz-option [nzValue]=1 nzLabel="male"></nz-option>
                     <nz-option [nzValue]=0 nzLabel="female"></nz-option>
                 </nz-select>
             </div>
 
-            <div *ngIf="!data.gender" nz-row>
+            <div *ngIf="!data.emp.gender" nz-row>
                 <p nzOffset="6" nz-col>{{validateResult}}</p>
             </div>
 
@@ -78,7 +78,7 @@
                 <label nz-col nzSpan="6"><span>* </span>department:</label>
                 <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
                     [(nzErrorTip)]="validateValue.department">
-                    <nz-select name="department" [(ngModel)]="data.department.id">
+                    <nz-select name="department" [(ngModel)]="data.emp.department.id">
                         <nz-option [nzValue]="department.id" *ngFor="let department of departments"
                             [nzLabel]="department.name"></nz-option>
                     </nz-select>
@@ -89,8 +89,18 @@
                 <label nz-col nzSpan="6"><span>* </span>status:</label>
                 <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
                     [(nzErrorTip)]="validateValue.status">
-                    <nz-select name="status" [(ngModel)]="data.status.id">
+                    <nz-select name="status" [(ngModel)]="data.emp.status.id">
                         <nz-option [nzValue]="status.id" *ngFor="let status of status" [nzLabel]="status.name"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Role:</label>
+                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
+                    [(nzErrorTip)]="validateValue.role">
+                    <nz-select name="status" [(ngModel)]="data.emp_role.role.id">
+                        <nz-option [nzValue]="role.id" *ngFor="let role of roles" [nzLabel]="role.name"></nz-option>
                     </nz-select>
                 </nz-form-control>
             </nz-form-item>

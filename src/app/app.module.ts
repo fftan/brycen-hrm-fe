@@ -40,6 +40,7 @@ import { AddEmployeeComponent } from './employee/add-employee/add-employee.compo
 import { CreateComponent } from './department/create/create.component';
 import { UpdateComponent } from './department/update/update.component';
 import { UpdateSkillComponent } from './skill/update-skill/update-skill.component';
+import { BrycenComponent } from './brycen/brycen.component';
 
 
 registerLocaleData(en);
@@ -60,7 +61,8 @@ registerLocaleData(en);
     UpdateSkillComponent,
     AddEmployeeComponent,
     CreateComponent,
-    UpdateComponent
+    UpdateComponent,
+    BrycenComponent
   ],
   imports: [
     BrowserModule,

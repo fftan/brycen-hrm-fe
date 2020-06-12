@@ -1,9 +1,9 @@
 <div nz-row>
   <h2 nz-col nzSpan="12">Danh sách các phòng</h2>
-  <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/add-department"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new department</a></button>
+  <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/department/add"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new department</a></button>
 </div>
 <hr />
-<nz-table style="height: 80%" nzTableLayout="fixed" nzTemplateMode>
+<nz-table style="height: 80%;margin-bottom: 20px;" nzTableLayout="fixed" nzTemplateMode>
   <thead>
     <tr>
       <th>Id</th>
@@ -14,8 +14,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let department of departments">
-      <td>{{ department.id }}</td>
+    <tr *ngFor="let department of departments; let i = index">
+      <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
       <td>{{ department.name }}</td>
       <td>{{ department.start_day }}</td>
       <td>{{ department.active }}</td>

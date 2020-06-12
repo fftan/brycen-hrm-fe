@@ -1,5 +1,22 @@
 <form>
-    <input nz-input type="text" name="username" placeholder="Enter username" />
-    <input nz-input type="password" name="password" placeholder="Enter password" />
-    <button nz-button nzType="primary" (click)="onClick()">Login</button>
+    <nz-form-item nz-row>
+        <nz-form-control [(nzValidateStatus)]="validateResult" [(nzErrorTip)]="validateValue.username">
+            <div class="input_username">
+                <i nz-icon nzType="user" nzTheme="outline"></i>
+                <input type="text" name="username" placeholder="Enter username" (keyup)="onChangeValue($event)" />
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item nz-row>
+        <nz-form-control [(nzValidateStatus)]="validateResult" [(nzErrorTip)]="validateValue.password">
+            <div class="input_password">
+                <i nz-icon nzType="lock" nzTheme="outline"></i>
+                <input type="password" name="password" placeholder="Enter password" (keyup)="onChangeValue($event)" />
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzType="primary" (click)="onClick(data)">Login</button>
+    <p style="color: red;">{{messageFail}}</p>
 </form>

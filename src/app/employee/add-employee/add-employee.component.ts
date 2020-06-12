@@ -37,24 +37,31 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   data = {
-    username: '',
-    full_name: '',
-    password: '',
-    id_card: 0,
-    birthday: '',
-    gender: 1,
-    phone: '',
-    email: '',
-    position: '',
-    department: {
-      id: 0
+    emp: {
+      username: '',
+      full_name: '',
+      password: '',
+      id_card: 0,
+      birthday: '',
+      gender: 1,
+      phone: '',
+      email: '',
+      position: '',
+      department: {
+        id: 0
+      },
+      status: {
+        id: 0
+      },
     },
-    status: {
-      id: 0
-    },
-    role: {
-      id: 0
-    },
+    emp_role: {
+      employee: {
+        id: 0
+      },
+      role: {
+        id: 0
+      }
+    }
   }
 
   constructor(private empService: EmployeeService) { }
@@ -71,40 +78,40 @@ export class AddEmployeeComponent implements OnInit {
 
     switch (name) {
       case 'username':
-        this.data.username = value;
+        this.data.emp.username = value;
         break;
       case 'password':
-        this.data.password = value;
+        this.data.emp.password = value;
         break;
       case 'full_name':
-        this.data.full_name = value;
+        this.data.emp.full_name = value;
         break;
       case 'id_card':
-        this.data.id_card = value;
+        this.data.emp.id_card = value;
         break;
       case 'birthday':
-        this.data.birthday = value;
+        this.data.emp.birthday = value;
         break;
       case 'gender':
-        this.data.gender = value;
+        this.data.emp.gender = value;
         break;
       case 'phone':
-        this.data.phone = value;
+        this.data.emp.phone = value;
         break;
       case 'email':
-        this.data.email = value;
+        this.data.emp.email = value;
         break;
       case 'position':
-        this.data.position = value;
+        this.data.emp.position = value;
         break;
       case 'department':
-        this.data.department = value;
+        this.data.emp.department = value;
         break;
       case 'status':
-        this.data.status = value;
+        this.data.emp.status = value;
         break;
       case 'role':
-        this.data.role = value;
+        this.data.emp_role.role = value;
         break;
 
       default:
@@ -176,7 +183,7 @@ export class AddEmployeeComponent implements OnInit {
   addEmployee = (data) => {
     console.log("AddEmployeeComponent -> addEmployee -> data", data)
     this.checkTypeField(data);
-    this.empService.addEmployee(data as Employee).subscribe(
+    this.empService.addEmployee(data).subscribe(
       emp => alert('successfully!'),
       err => {
         console.log("AddEmployeeComponent -> addEmployee -> err", err)
@@ -188,7 +195,8 @@ export class AddEmployeeComponent implements OnInit {
   getDepartments = () => {
     this.empService.getDepartments().subscribe(
       dep => {
-        this.departments = dep;
+        console.log("AddEmployeeComponent -> getDepartments -> dep", dep)
+        this.departments = dep['content'];
       },
 
       err => {

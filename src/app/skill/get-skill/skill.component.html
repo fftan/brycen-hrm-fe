@@ -1,9 +1,9 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">Danh sách các skill</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/add-skill"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new skill</a></button>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/skill/add"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new skill</a></button>
 </div>
 <hr />
-<nz-table nzTemplateMode nzTableLayout="fixed" style="min-height: 80%;">
+<nz-table nzTemplateMode nzTableLayout="fixed" style="min-height: 80%; margin-bottom: 20px;">
     <thead>
         <tr>
             <th>Id</th>
@@ -12,8 +12,8 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let skill of skills">
-            <td>{{ skill.id }}</td>
+        <tr *ngFor="let skill of skills; let i = index">
+            <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
             <td>{{ skill.name }}</td>
             <td>
                 <a>update</a>

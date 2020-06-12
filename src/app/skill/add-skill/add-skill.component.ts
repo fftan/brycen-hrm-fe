@@ -12,9 +12,9 @@ export class AddSkillComponent implements OnInit {
   levelValue = 0;
   isValidName = '';
   isValidLevel = '';
-
+  
   constructor(private skillService: SkillService) { }
-
+  
   ngOnInit(): void {
   }
 
