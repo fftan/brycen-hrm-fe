@@ -24,9 +24,7 @@ export class SkillComponent implements OnInit {
   }
 
   getSkills(page:any, size:any): void {
-    console.log("SkillComponent -> getSkills -> page", page)
     this.skillService.getSkill(page, size).subscribe((skills: any) => {
-    console.log("SkillComponent -> getSkills -> skills", skills)
       this.skills = skills.content;
       this.totalItem = skills.totalElements;
     });

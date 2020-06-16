@@ -2,7 +2,7 @@
   <nz-sider class="menu-sidebar" nzTheme="light" nzCollapsible nzWidth="256px" nzBreakpoint="md"
     [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
     <div class="sidebar-logo">
-      <a href="https://ng.ant.design/" target="_blank">
+      <a routerLink="/brycen">
         <img src="../assets/logo.png" alt="logo">
       </a>
     </div>
@@ -17,6 +17,18 @@
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/brycen/employee">Employee</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/brycen/role">Role</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/brycen/permission">Permission</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/brycen/status">Status</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a routerLink="/brycen/task">Task</a>
           </li>
         </ul>
       </li>

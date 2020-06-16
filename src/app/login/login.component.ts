@@ -71,12 +71,11 @@ export class LoginComponent implements OnInit {
     this.checkTypeField(data);
     this.loginService.login(data.username, data.password).subscribe(
       (emp: any) => {
-        if (emp.length !== 0) {
+      console.log("LoginComponent -> onClick -> emp", emp)
           const jsonEmployee = JSON.stringify(emp);
           const encryptData = CryptoJs.AES.encrypt(jsonEmployee, localstore.scretkey.trim()).toString();
           localStorage.setItem(localstore.USER_LOGIN, encryptData);
           this.route.navigate(['/brycen']);
-        }
       },
       err => {
         console.log("LoginComponent -> onClick -> err", err)

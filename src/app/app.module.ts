@@ -29,11 +29,11 @@ import { AppComponent } from './app.component';
 import { DepartmentComponent } from './department/get/department.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
-import { TaskComponent } from './task/task.component';
-import { StatusComponent } from './status/status.component';
+import { TaskComponent } from './task/get-task/task.component';
+import { StatusComponent } from './status/get-status/status.component';
 import { SkillComponent } from './skill/get-skill/skill.component';
-import { RoleComponent } from './role/role.component';
-import { PermissionComponent } from './permission/permission.component';
+import { RoleComponent } from './role/get-role/role.component';
+import { PermissionComponent } from './permission/get-permisson/permission.component';
 import { EmployeeComponent } from './employee/get-employee/employee.component';
 import { AddSkillComponent } from './skill/add-skill/add-skill.component';
 import { AddEmployeeComponent } from './employee/add-employee/add-employee.component';
@@ -41,6 +41,17 @@ import { CreateComponent } from './department/create/create.component';
 import { UpdateComponent } from './department/update/update.component';
 import { UpdateSkillComponent } from './skill/update-skill/update-skill.component';
 import { BrycenComponent } from './brycen/brycen.component';
+import { EmployeeSkillComponent } from './brycen/employee-skill/employee-skill.component';
+import { ProfileComponent } from './brycen/profile/profile.component';
+import { AddTaskComponent } from './task/add-task/add-task.component';
+import { UpdateTaskComponent } from './task/update-task/update-task.component';
+import { AddStatusComponent } from './status/add-status/add-status.component';
+import { UpdateStatusComponent } from './status/update-status/update-status.component';
+import { AddRoleComponent } from './role/add-role/add-role.component';
+import { UpdateRoleComponent } from './role/update-role/update-role.component';
+import { AddPermissionComponent } from './permission/add-permission/add-permission.component';
+import { UpdatePermissionComponent } from './permission/update-permission/update-permission.component';
+import { DashboardComponent } from './brycen/dashboard/dashboard.component';
 
 
 registerLocaleData(en);
@@ -49,20 +60,42 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    DepartmentComponent,
+    DashboardComponent,
+    // login
     LoginComponent,
-    TaskComponent,
-    StatusComponent,
-    SkillComponent,
-    RoleComponent,
-    PermissionComponent,
+    // department
+    UpdateComponent,
+    CreateComponent,
+    DepartmentComponent,
+    // employee
     EmployeeComponent,
+    AddEmployeeComponent,
+    // permission
+    PermissionComponent,
+    AddPermissionComponent,
+    UpdatePermissionComponent,
+    // role
+    AddRoleComponent,
+    UpdateRoleComponent,
+    RoleComponent,
+    // skill
+    SkillComponent,
     AddSkillComponent,
     UpdateSkillComponent,
-    AddEmployeeComponent,
-    CreateComponent,
-    UpdateComponent,
-    BrycenComponent
+    // status
+    StatusComponent,
+    AddStatusComponent,
+    UpdateStatusComponent,
+    // task
+    TaskComponent,
+    AddTaskComponent,
+    UpdateTaskComponent,
+    // brycen
+    BrycenComponent,
+    // profile
+    ProfileComponent,
+    // skill of employee
+    EmployeeSkillComponent,
   ],
   imports: [
     BrowserModule,

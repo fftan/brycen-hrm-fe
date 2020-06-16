@@ -1,0 +1,26 @@
+<div nz-row>
+    <h2 nz-col nzSpan="12">List status</h2>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/status/add"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new status</a></button>
+</div>
+<hr />
+<nz-table nzTemplateMode nzTableLayout="fixed" style="min-height: 80%; margin-bottom: 20px;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let status of status; let i = index">
+            <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
+            <td>{{ status.name }}</td>
+            <td>
+                <a>update</a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a>Disable</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
+<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem" (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>

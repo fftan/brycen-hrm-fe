@@ -122,49 +122,49 @@ export class AddEmployeeComponent implements OnInit {
   checkTypeField = (data) => {
     console.log("AddEmployeeComponent -> checkTypeField -> data", data)
 
-    if (!data.username) {
+    if (!data.emp.username) {
       this.validateValue.username = 'Please enter username';
       this.validateResult = 'error';
       return;
     }
 
-    if (!data.password) {
+    if (!data.emp.password) {
       this.validateValue.password = 'Please enter password';
       this.validateResult = 'error';
       return;
     }
 
-    if (!data.full_name) {
+    if (!data.emp.full_name) {
       this.validateValue.full_name = 'Please enter full name';
       this.validateResult = 'error';
       return;
     }
 
-    if (!data.id_card) {
+    if (!data.emp.id_card) {
       this.validateValue.id_card = 'Please enter  id card';
       this.validateResult = 'error';
       return;
     }
 
-    if (!data.gender) {
+    if (!data.emp.gender) {
       this.validateValue.gender = 'Please enter gender';
       this.validateResult = 'error';
       return;
     }
 
-    if (data.department.id === 0) {
+    if (data.emp.department.id === 0) {
       this.validateValue.department = 'Please choose department';
       this.validateResult = 'error';
       return;
     }
 
-    if (data.status.id === 0) {
+    if (data.emp.status.id === 0) {
       this.validateValue.status = 'Please choose status';
       this.validateResult = 'error';
       return;
     }
 
-    if (data.role.id === 0) {
+    if (data.emp.role.id === 0) {
       this.validateValue.role = 'Please choose role';
       this.validateResult = 'error';
       return;

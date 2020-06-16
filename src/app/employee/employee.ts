@@ -3,15 +3,15 @@ export class Employee {
     username: string;
     full_name: string;
     id_card: number;
-    birthday: Date;
+    birthday: number;
     gender: boolean;
     phone: string;
     email: string;
     position: string;
     skill: number;
-    status: string;
-    department: string;
-    role: number;
+    status: any;
+    department: any;
+    role: any;
 }
 
 export class EmpSkill {

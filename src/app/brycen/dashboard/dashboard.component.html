@@ -1,0 +1,47 @@
+<div nz-row nzJustify="space-between">
+    <div nz-col nzSpan="11" class="btn--box">
+        <h2>Total Project</h2>
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <p>{{projects.length}}</p>
+                <p>{{offshoreProjects.length}}</p>
+            </div>
+            <div nz-col nzSpan="12">
+                <button nz-button nzDanger class="btnMore"><a routerLink="/brycen/task">More >></a></button>
+            </div>
+        </div>
+    </div>
+    <div nz-col nzSpan="11" nzOffset="1" class="btn--box">
+        <h2>Total Employee</h2>
+        <div nz-row>
+            <div nz-col nzSpan="12">
+                <p>{{OJTEmployee.length}}</p>
+                <p>{{BEmployee.length}}</p>
+            </div>
+            <div nz-col nzSpan="12">
+                <button nz-button nzDanger class="btnMore"><a routerLink="/brycen/employee">More >></a></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div nz-row nzJustify="space-between">
+    <div nz-col nzSpan="11" class="col-12">
+        <h2>Manager & Leader</h2>
+        <div *ngFor="let emp of ProEmployee; let i = index" nz-row style="margin-bottom: 10px;">
+            <div class="container-avatar">
+                <img src="../../../assets/avatar.jpg" width="30px" height="30px"/>
+            </div>
+            <h3>{{emp.full_name}}</h3>
+        </div>
+    </div>
+    <div nz-col nzSpan="11" nzOffset="1" class="col-12">
+        <h2>Projects Stats</h2>
+        <div *ngFor="let project of projects; let i = index" nz-row style="margin-bottom: 10px;">
+            <div class="container-avatar">
+                <img src="../../../assets/project.png" width="30px" height="30px"/>
+            </div>
+            <h3>{{project.name}}</h3>
+        </div>
+    </div>
+</div>

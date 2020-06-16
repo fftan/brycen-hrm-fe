@@ -1,0 +1,34 @@
+.btn--box {
+    background: linear-gradient(to right, #085 ,#4caf50);
+    border-radius: 5px;
+    padding: 10px;
+    height: 150px;
+    margin-bottom: 30px;
+}
+
+.btn--box h2, p {
+    color: #fff
+}
+
+.btnMore {
+    color: #fff;
+    background: #e45a35;
+    float:right;
+    margin-top: 30px;
+}
+
+.container-avatar {
+    border-radius: 5px;
+    background: #eaeaea;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.col-12 {
+    box-shadow: 0 0 10px #cccaca;
+    padding: 10px;
+}
