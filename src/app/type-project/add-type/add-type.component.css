@@ -6,12 +6,11 @@ form {
 }
 
 input {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     border: 1px solid #aaaaaa;
     outline: none;
     border-radius: 2px;
     padding: 4px 20px;
-    width: 100%;
 }
 
 input:hover {
@@ -24,18 +23,10 @@ span {
 
 p {
     color: red;
+    margin-top: -10px;
 }
 
 button {
     display: flex;
     align-self: center;
-    margin-top: 20px;
-}
-
-.select-box {
-    margin: 20px 0;
-}
-
-nz-date-picker {
-    margin-bottom: 24px;
 }

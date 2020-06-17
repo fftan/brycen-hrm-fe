@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 // Components
 import { BrycenComponent } from './brycen.component';
-import { ProfileComponent } from './profile/profile.component';
-import { EmployeeSkillComponent } from './employee-skill/employee-skill.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from '../profile/profile.component';
+import { EmployeeSkillComponent } from '../profile/employee-skill/employee-skill.component';
 
 const routes: Routes = [
     {
@@ -47,16 +47,20 @@ const routes: Routes = [
                 loadChildren: () => import('../permission/permission.module').then(m => m.PermissionModule)
             },
             {
+                path: 'profile',
+                loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
+            },
+            {
+                path: 'type-project',
+                loadChildren: () => import('../type-project/type-project.module').then(m => m.TypeProjectModule)
+            },
+            {
+                path: 'level',
+                loadChildren: () => import('../level/level.module').then(m => m.LevelModule)
+            },
+            {
                 path: 'dashboard',
                 component: DashboardComponent
-            },
-            {
-                path: 'profile',
-                component: ProfileComponent
-            },
-            {
-                path: 'add-skill',
-                component: EmployeeSkillComponent
             },
             {
                 path: '**',

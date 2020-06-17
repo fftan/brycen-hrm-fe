@@ -1,4 +1,4 @@
-<h2>Add new employee</h2>
+<h2>Add new type</h2>
 <hr />
 <div nz-row nzAlign="middle" nzJustify="space-around">
     <div nz-col nzXXL="8" nzXL="8" nzLg="12" nzMd="12" nzSM="18" nzXs="18" style="margin: 0 auto">
@@ -11,8 +11,15 @@
                 </nz-form-control>
             </nz-form-item>
 
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6">Description:</label>
+                <nz-form-control nz-col nzSpan="18">
+                    <input nz-input type="text" name="description" (keyup)="onChangeValue($event)" />
+                </nz-form-control>
+            </nz-form-item>
+
             <div>
-                <button (click)="addRole(data)" nz-button nzType="primary" nz-col nzSpan="6"
+                <button (click)="addLevel(data)" nz-button nzType="primary" nz-col nzSpan="6"
                     nzOffset="6">save</button>
             </div>
         </form>

@@ -1,13 +1,13 @@
-import { Role } from './../../role/role';
-import { Status } from './../../status/status';
-import { Department } from './../../department/department';
+import { Employee } from './../employee/employee';
+import { Department } from './../department/department';
+import { getUser } from './../helpers/defineFunc';
 import { ProfileService } from './profile.service';
-import { Employee } from './../../employee/employee';
 
 import { Component, OnInit } from '@angular/core';
 import * as CryptoJs from 'crypto-js';
+import { Status } from '../status/status';
+import { Role } from '../role/role';
 
-import { getUser } from './../../helpers/defineFunc';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',

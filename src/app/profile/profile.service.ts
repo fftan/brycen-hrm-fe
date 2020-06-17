@@ -1,10 +1,13 @@
-import { Role } from './../../role/role';
-import { Status } from './../../status/status';
+
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
+
+// Components
 import { Employee } from 'src/app/employee/employee';
 import { Department } from 'src/app/department/department';
+import { Status } from '../status/status';
+import { Role } from '../role/role';
 
 @Injectable({providedIn: 'root'})
 export class ProfileService {

@@ -1,23 +1,25 @@
-import { RoleService } from './../role.service';
+import { LevelService } from './../level.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-add-role',
-  templateUrl: './add-role.component.html',
-  styleUrls: ['./add-role.component.css']
+  selector: 'app-add-level',
+  templateUrl: './add-level.component.html',
+  styleUrls: ['./add-level.component.css']
 })
-export class AddRoleComponent implements OnInit {
+export class AddLevelComponent implements OnInit {
 
   data = {
-    name: ''
-  };
+    name: '',
+    description: ''
+  }
+
   validateResult = '';
 
   validateValue = {
     name: '',
   }
 
-  constructor(private roleService: RoleService) { }
+  constructor(private levelService: LevelService) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +31,9 @@ export class AddRoleComponent implements OnInit {
     switch (name) {
       case 'name':
         this.data.name = value;
+        break;
+        case 'description':
+        this.data.description = value;
         break;
       default:
         break;
@@ -47,15 +52,13 @@ export class AddRoleComponent implements OnInit {
     this.validateResult = '';
   }
 
-  addRole = (data) => {
+  addLevel = (data) => {
     this.checkTypeField(data);
-    this.roleService.addRole(data).subscribe(
-      (data: any) => {
-        console.log("AddRoleComponent -> addRole -> data", data)
-        alert('successfully!')
-      },
+    this.levelService.addLevel(data).subscribe(
+      () => alert('successfully'),
       err => {
-
+      console.log("AddLevelComponent -> addLevel -> err", err)
+        
       }
     )
   }

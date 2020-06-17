@@ -1,1 +1,63 @@
-<p>add-task works!</p>
+<h2>Add new task</h2>
+<hr />
+<div nz-row nzAlign="middle" nzJustify="space-around">
+    <div nz-col nzXXL="8" nzXL="8" nzLg="12" nzMd="12" nzSM="18" nzXs="18" style="margin: 0 auto">
+        <form nz-form>
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Name:</label>
+                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
+                    [(nzErrorTip)]="validateValue.name">
+                    <input nz-input type="text" name="name" (keyup)="onChangeValue($event)" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6">Description:</label>
+                <nz-form-control nz-col nzSpan="18">
+                    <input nz-input type="text" name="description" (keyup)="onChangeValue($event)" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6">Estimate:</label>
+                <nz-form-control nz-col nzSpan="18">
+                    <input nz-input type="text" name="estimate" (keyup)="onChangeValue($event)" />
+                </nz-form-control>
+            </nz-form-item>
+
+            <div nz-row>
+                <label nz-col nzSpan="6">Start day:</label>
+                <nz-date-picker name="start_date" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.start_date">
+                </nz-date-picker>
+            </div>
+
+            <div nz-row>
+                <label nz-col nzSpan="6">End day:</label>
+                <nz-date-picker name="end_date" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.end_date">
+                </nz-date-picker>
+            </div>
+
+            <div nz-row>
+                <label nz-col nzSpan="6">Create day:</label>
+                <nz-date-picker name="create_date" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.create_date">
+                </nz-date-picker>
+            </div>
+
+            <nz-form-item  nz-row>
+                <label nz-col nzSpan="6"><span>* </span>Type:</label>
+                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
+                    [(nzErrorTip)]="validateValue.type">
+                    <nz-select name="type" [(ngModel)]="data.type.id">
+                        <nz-option [nzValue]="type.id" *ngFor="let type of types"
+                            [nzLabel]="type.type"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+
+            <div>
+                <button (click)="addTask(data)" nz-button nzType="primary" nz-col nzSpan="6"
+                    nzOffset="6">save</button>
+            </div>
+        </form>
+    </div>
+</div>

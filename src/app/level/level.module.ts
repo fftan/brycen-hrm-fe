@@ -1,11 +1,11 @@
-import { BrycenRoutingModule } from './brycen-routing.module';
+import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import en from '@angular/common/locales/en';
 import { registerLocaleData } from '@angular/common';
-import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { NgModule } from '@angular/core';
 
 // Components
-import { BrycenComponent } from './brycen.component';
+import { LevelRoutingModule } from './level-routing.module';
+import { LevelComponent } from './get-level/level.component';
 
 registerLocaleData(en);
 
@@ -13,9 +13,9 @@ registerLocaleData(en);
     declarations: [
     ],
     imports: [
-    BrycenRoutingModule,
+    LevelRoutingModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: en_US }],
-    bootstrap: [BrycenComponent]
+    bootstrap: [LevelComponent]
   })
-  export class BrycenModule { }
+  export class LevelModule { }
