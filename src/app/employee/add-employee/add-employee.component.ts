@@ -119,9 +119,7 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
-    console.log("AddEmployeeComponent -> checkTypeField -> data", data)
-
+  addEmployee = (data) => {
     if (!data.emp.username) {
       this.validateValue.username = 'Please enter username';
       this.validateResult = 'error';
@@ -146,12 +144,6 @@ export class AddEmployeeComponent implements OnInit {
       return;
     }
 
-    if (!data.emp.gender) {
-      this.validateValue.gender = 'Please enter gender';
-      this.validateResult = 'error';
-      return;
-    }
-
     if (data.emp.department.id === 0) {
       this.validateValue.department = 'Please choose department';
       this.validateResult = 'error';
@@ -164,7 +156,7 @@ export class AddEmployeeComponent implements OnInit {
       return;
     }
 
-    if (data.emp.role.id === 0) {
+    if (data.emp_role.role.id === 0) {
       this.validateValue.role = 'Please choose role';
       this.validateResult = 'error';
       return;
@@ -173,16 +165,10 @@ export class AddEmployeeComponent implements OnInit {
     this.validateValue.password = '';
     this.validateValue.full_name = '';
     this.validateValue.id_card = '';
-    this.validateValue.gender = '';
     this.validateValue.department = '';
     this.validateValue.status = '';
     this.validateValue.role = '';
     this.validateResult = '';
-  }
-
-  addEmployee = (data) => {
-    console.log("AddEmployeeComponent -> addEmployee -> data", data)
-    this.checkTypeField(data);
     this.empService.addEmployee(data).subscribe(
       emp => alert('successfully!'),
       err => {
@@ -196,7 +182,7 @@ export class AddEmployeeComponent implements OnInit {
     this.empService.getDepartments().subscribe(
       dep => {
         console.log("AddEmployeeComponent -> getDepartments -> dep", dep)
-        this.departments = dep['content'];
+        this.departments = dep;
       },
 
       err => {

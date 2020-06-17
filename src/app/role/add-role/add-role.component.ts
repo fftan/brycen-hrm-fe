@@ -35,8 +35,7 @@ export class AddRoleComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
-
+  addRole = (data) => {
     if (!data.name) {
       this.validateValue.name = 'Please enter name';
       this.validateResult = 'error';
@@ -45,17 +44,12 @@ export class AddRoleComponent implements OnInit {
 
     this.validateValue.name = '';
     this.validateResult = '';
-  }
-
-  addRole = (data) => {
-    this.checkTypeField(data);
     this.roleService.addRole(data).subscribe(
       (data: any) => {
-        console.log("AddRoleComponent -> addRole -> data", data)
         alert('successfully!')
       },
       err => {
-
+      console.log("AddRoleComponent -> addRole -> err", err)
       }
     )
   }

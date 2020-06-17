@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
+  onClick = (data) => {
     if (!data.username) {
       this.validateValue.username = 'Please enter username';
       this.validateResult = 'error';
@@ -65,13 +65,8 @@ export class LoginComponent implements OnInit {
     this.validateValue.username = '';
     this.validateValue.password = '';
     this.validateResult = '';
-  }
-
-  onClick = (data) => {
-    this.checkTypeField(data);
     this.loginService.login(data.username, data.password).subscribe(
       (emp: any) => {
-      console.log("LoginComponent -> onClick -> emp", emp)
           const jsonEmployee = JSON.stringify(emp);
           const encryptData = CryptoJs.AES.encrypt(jsonEmployee, localstore.scretkey.trim()).toString();
           localStorage.setItem(localstore.USER_LOGIN, encryptData);

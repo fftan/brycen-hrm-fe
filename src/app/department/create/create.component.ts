@@ -14,7 +14,7 @@ export class CreateComponent implements OnInit {
   data = {
     name: '',
     active: 0,
-    start_day: Date.now(),
+    create_date: Date.now(),
     persion_id: 4
   }
 
@@ -42,7 +42,7 @@ export class CreateComponent implements OnInit {
         this.data.name = value;
         break;
       case 'start_day':
-        this.data.start_day = value;
+        this.data.create_date = value;
         break;
       case 'active':
         this.data.active = value;
@@ -56,26 +56,16 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
+  addDepartments(data): void {
+    console.log("CreateComponent -> addDepartments -> data", data)
     if (!data.name) {
       this.validateValue.name = 'Please enter name';
       this.validateResult = 'error';
       return;
     }
 
-    if (!data.active) {
-      this.validateValue.active = 'Please choose value';
-      this.validateResult = 'error';
-      return;
-    }
-
     this.validateValue.name = '';
-    this.validateValue.active = '';
-  }
-
-  addDepartments(data): void {
-    console.log("CreateComponent -> addDepartments -> data", data)
-    this.checkTypeField(data);
+    this.validateResult = '';
     this.departmentService.addDepartment(data as Department).subscribe(
       data => alert('successfully!'),
       err => {

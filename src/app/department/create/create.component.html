@@ -12,15 +12,14 @@
             </nz-form-item>
 
             <div nz-row>
-                <label nz-col nzSpan="6">start_day:</label>
-                <nz-date-picker name="start_day" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.start_day" style="margin-bottom: 24px;">
+                <label nz-col nzSpan="6">Create day:</label>
+                <nz-date-picker name="create_date" nz-col nzSpan="18" [nzFormat]="dateFormat" [(ngModel)]="data.create_date" style="margin-bottom: 24px;">
                 </nz-date-picker>
             </div>
 
             <nz-form-item  nz-row>
-                <label nz-col nzSpan="6"><span>* </span>Active:</label>
-                <nz-form-control nz-col nzSpan="18" [(nzValidateStatus)]="validateResult"
-                    [(nzErrorTip)]="validateValue.active">
+                <label nz-col nzSpan="6">Active:</label>
+                <nz-form-control nz-col nzSpan="18">
                     <nz-select name="department" [(ngModel)]="data.active">
                         <nz-option [nzValue]=1 nzLabel="Hoạt động"></nz-option>
                         <nz-option [nzValue]=0 nzLabel="Không hoạt động"></nz-option>

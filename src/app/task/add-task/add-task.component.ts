@@ -69,8 +69,8 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
-
+  addTask = (data) => {
+    // Validate
     if (!data.name) {
       this.validateValue.name = 'Please enter name';
       this.validateResult = 'error';
@@ -85,17 +85,14 @@ export class AddTaskComponent implements OnInit {
     this.validateValue.name = '';
     this.validateValue.type = '';
     this.validateResult = '';
-  }
 
-  addTask = (data) => {
-    this.checkTypeField(data);
+    // post data
     this.taskService.addTask(data).subscribe(
       (data: any) => {
-        console.log("AddRoleComponent -> addRole -> data", data)
         alert('successfully!')
       },
       err => {
-
+      console.log("AddTaskComponent -> addTask -> err", err)
       }
     )
   }

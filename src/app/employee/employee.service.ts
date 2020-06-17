@@ -38,15 +38,15 @@ export class EmployeeService {
 
     // Get table relationship
     getDepartments(): Observable<Department[]> {
-        return this.http.get<Department[]>(`${this.mainUrl}/departments`);
+        return this.http.get<Department[]>(`${this.mainUrl}/department-list`);
     }
 
     getStatus(): Observable<Status[]> {
-        return this.http.get<Status[]>(`${this.mainUrl}/status`);
+        return this.http.get<Status[]>(`${this.mainUrl}/status-list`);
     }
 
     getRoles(): Observable<Role[]> {
-        return this.http.get<Role[]>(`${this.mainUrl}/roles`);
+        return this.http.get<Role[]>(`${this.mainUrl}/role-list`);
     }
 
     getSkills(): Observable<Skill[]> {

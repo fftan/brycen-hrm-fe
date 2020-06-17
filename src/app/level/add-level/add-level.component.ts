@@ -32,7 +32,7 @@ export class AddLevelComponent implements OnInit {
       case 'name':
         this.data.name = value;
         break;
-        case 'description':
+      case 'description':
         this.data.description = value;
         break;
       default:
@@ -40,8 +40,7 @@ export class AddLevelComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
-
+  addLevel = (data) => {
     if (!data.name) {
       this.validateValue.name = 'Please enter name';
       this.validateResult = 'error';
@@ -50,15 +49,10 @@ export class AddLevelComponent implements OnInit {
 
     this.validateValue.name = '';
     this.validateResult = '';
-  }
-
-  addLevel = (data) => {
-    this.checkTypeField(data);
     this.levelService.addLevel(data).subscribe(
       () => alert('successfully'),
       err => {
-      console.log("AddLevelComponent -> addLevel -> err", err)
-        
+        console.log("AddLevelComponent -> addLevel -> err", err)
       }
     )
   }

@@ -6,7 +6,6 @@ form {
 }
 
 input {
-    margin-bottom: 25px;
     border: 1px solid #aaaaaa;
     outline: none;
     border-radius: 2px;
@@ -19,11 +18,6 @@ input:hover {
 
 span {
     color: red;
-}
-
-p {
-    color: red;
-    margin-top: -10px;
 }
 
 button {

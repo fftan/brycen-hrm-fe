@@ -35,8 +35,8 @@ export class AddTypeComponent implements OnInit {
     }
   }
 
-  checkTypeField = (data) => {
-
+  addType = (data) => {
+    // Validate
     if (!data.type) {
       this.validateValue.type = 'Please enter name';
       this.validateResult = 'error';
@@ -45,14 +45,12 @@ export class AddTypeComponent implements OnInit {
 
     this.validateValue.type = '';
     this.validateResult = '';
-  }
 
-  addType = (data) => {
+    // Post data
     this.typeService.addType(data).subscribe(
       () => alert('successfully!'),
       err => {
       console.log("AddTypeComponent -> addType -> err", err)
-        
       }
     )
   }
