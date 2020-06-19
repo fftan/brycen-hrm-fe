@@ -1,12 +1,14 @@
-import { Employee } from './../employee/employee';
-import { Department } from './../department/department';
-import { getUser } from './../helpers/defineFunc';
-import { ProfileService } from './profile.service';
 
 import { Component, OnInit } from '@angular/core';
 import * as CryptoJs from 'crypto-js';
+
+// Components
 import { Status } from '../status/status';
+import { Employee } from './../employee/employee';
+import { Department } from './../department/department';
+import { ProfileService } from './profile.service';
 import { Role } from '../role/role';
+import { getUser } from '../common/helpers/defineFunc';
 
 @Component({
   selector: 'app-profile',
@@ -14,13 +16,6 @@ import { Role } from '../role/role';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
-  departments: Department[];
-
-  status: Status[];
-
-  roles: Role[];
-
   user = getUser();
 
   userInfo: Employee;
@@ -33,44 +28,22 @@ export class ProfileComponent implements OnInit {
     full_name: '',
     id_card: '',
     gender: '',
-    department: '',
-    status: '',
-    role: '',
   }
 
   data = {
-    emp: {
-      full_name: '',
-      id_card: 0,
-      birthday: Date.now(),
-      gender: true,
-      phone: '',
-      email: '',
-      position: '',
-      department: {
-        id: 0
-      },
-      status: {
-        id: 0
-      },
-    },
-    emp_role: {
-      employee: {
-        id: 0
-      },
-      role: {
-        id: 0
-      }
-    }
+    full_name: '',
+    id_card: 0,
+    birthday: Date.now(),
+    gender: true,
+    phone: '',
+    email: '',
+    position: '',
   }
 
   constructor(private profileSerivce: ProfileService) { }
 
   ngOnInit(): void {
     this.getProfile(this.user.id);
-    this.getRoles();
-    this.getStatus();
-    this.getDepartments();
   }
 
   onChangeValue(event: any) {
@@ -79,34 +52,25 @@ export class ProfileComponent implements OnInit {
 
     switch (name) {
       case 'full_name':
-        this.data.emp.full_name = value;
+        this.data.full_name = value;
         break;
       case 'id_card':
-        this.data.emp.id_card = value;
+        this.data.id_card = value;
         break;
       case 'birthday':
-        this.data.emp.birthday = value;
+        this.data.birthday = value;
         break;
       case 'gender':
-        this.data.emp.gender = value;
+        this.data.gender = value;
         break;
       case 'phone':
-        this.data.emp.phone = value;
+        this.data.phone = value;
         break;
       case 'email':
-        this.data.emp.email = value;
+        this.data.email = value;
         break;
       case 'position':
-        this.data.emp.position = value;
-        break;
-      case 'department':
-        this.data.emp.department = value;
-        break;
-      case 'status':
-        this.data.emp.status = value;
-        break;
-      case 'role':
-        this.data.emp_role.role = value;
+        this.data.position = value;
         break;
 
       default:
@@ -135,90 +99,27 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    if (data.emp.department.id === 0) {
-      this.validateValue.department = 'Please choose department';
-      this.validateResult = 'error';
-      return;
-    }
-
-    if (data.emp.status.id === 0) {
-      this.validateValue.status = 'Please choose status';
-      this.validateResult = 'error';
-      return;
-    }
-
-    if (data.emp.role.id === 0) {
-      this.validateValue.role = 'Please choose role';
-      this.validateResult = 'error';
-      return;
-    }
     this.validateValue.full_name = '';
     this.validateValue.id_card = '';
     this.validateValue.gender = '';
-    this.validateValue.department = '';
-    this.validateValue.status = '';
-    this.validateValue.role = '';
     this.validateResult = '';
   }
 
   getProfile = (id: number) => {
     this.profileSerivce.getUserById(id).subscribe(
       (profile: any) => {
-        console.log("ProfileComponent -> getProfile -> profile", profile)
         this.userInfo = profile;
-        console.log("ProfileComponent -> getProfile -> this.userInfo", this.userInfo)
-        this.data.emp.full_name = this.userInfo.full_name;
-        this.data.emp.id_card = this.userInfo.id_card;
-        this.data.emp.birthday = this.userInfo.birthday;
-        this.data.emp.gender = this.userInfo.gender;
-        this.data.emp.phone = this.userInfo.phone;
-        this.data.emp.email = this.userInfo.email;
-        this.data.emp.position = this.userInfo.position;
-        this.data.emp.status.id = this.userInfo.status.id;
-        this.data.emp.department.id = this.userInfo.department.id;
-        this.data.emp_role.role.id = this.userInfo['employee_role'].role.id;
+        this.data.full_name = this.userInfo.full_name;
+        this.data.id_card = this.userInfo.id_card;
+        this.data.birthday = this.userInfo.birthday;
+        this.data.gender = this.userInfo.gender;
+        this.data.phone = this.userInfo.phone;
+        this.data.email = this.userInfo.email;
+        this.data.position = this.userInfo.position;
       },
       err => {
         console.log("ProfileComponent -> getProfile -> err", err)
 
-      }
-    )
-  }
-
-  // Relationship method
-  getDepartments = () => {
-    this.profileSerivce.getDepartments().subscribe(
-      dep => {
-        console.log("AddEmployeeComponent -> getDepartments -> dep", dep)
-        this.departments = dep['content'];
-      },
-
-      err => {
-        console.log("AddEmployeeComponent -> getDepartment -> err", err)
-      }
-    )
-  }
-
-  getStatus = () => {
-    this.profileSerivce.getStatus().subscribe(
-      status => {
-        this.status = status;
-      },
-
-      err => {
-        console.log("AddEmployeeComponent -> getDepartment -> err", err)
-      }
-    )
-  }
-
-  getRoles = () => {
-    this.profileSerivce.getRoles().subscribe(
-      roles => {
-        this.roles = roles;
-      },
-
-      err => {
-        console.log("AddEmployeeComponent -> getDepartment -> err", err)
       }
     )
   }

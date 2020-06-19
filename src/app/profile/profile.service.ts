@@ -20,17 +20,4 @@ export class ProfileService {
     getUserById(id:number): Observable<Employee> {
         return this.http.get<Employee>(`${this.url}/${id}`);
     }
-
-    // relationship data
-    getDepartments(): Observable<Department[]>{
-        return this.http.get<Department[]>(`${this.mainUrl}/departments`);
-    }
-
-    getStatus(): Observable<Status[]>{
-        return this.http.get<Status[]>(`${this.mainUrl}/status`);
-    }
-
-    getRoles(): Observable<Role[]>{
-        return this.http.get<Role[]>(`${this.mainUrl}/roles`);
-    }
 }

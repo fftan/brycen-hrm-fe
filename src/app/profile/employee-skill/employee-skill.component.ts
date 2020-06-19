@@ -1,3 +1,5 @@
+import { TokenStorageService } from './../../common/services/token-storage.service';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { EmployeeSkillService } from './employee-skill.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeeSkillComponent implements OnInit {
 
-  arrInput: Array<{ idSkill: number, skill: string, idLevel: number, level: string }> = [
-    { idSkill: 0, skill: `skill0`, idLevel: 0, level: `level0` }
-  ];
+  myForm: FormGroup;
 
   skillsSuggest = [];
 
@@ -18,11 +18,28 @@ export class EmployeeSkillComponent implements OnInit {
 
   selectedValue = [];
 
-  constructor(private empSkillService: EmployeeSkillService) { }
+  user = [];
+
+  data = [
+    {
+      skill: { id: 0 },
+      level: { id: 0 },
+      employee: { id: this.tokenService.getUser().id }
+    }
+  ]
+
+  constructor(
+    private empSkillService: EmployeeSkillService,
+    private tokenService: TokenStorageService,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.getSkill();
     this.getLevel();
+    this.myForm = this.fb.group({
+      data: this.fb.array([])
+    })
   }
 
   getSkill(): void {
@@ -43,44 +60,34 @@ export class EmployeeSkillComponent implements OnInit {
     )
   }
 
-  // removeInput = (item, event) => {
-  //   console.log("EmployeeSkillComponent -> removeInput -> item", item)
-  //   console.log("EmployeeSkillComponent -> removeInput -> event", event)
-  //   if (this.arrInput.length > 1) {
-  //     this.arrInput.splice(item, 1);
-  //   }
-  // }
-
-  // addInput = () => {
-  //   this.lengthInput = this.lengthInput + 1;
-  //   this.arrInput.push(this.lengthInput);
-  // }
-
-  addField(e?: MouseEvent): void {
-    if (e) {
-      e.preventDefault();
-    }
-    const idSkill = this.arrInput.length > 0 ? this.arrInput[this.arrInput.length - 1].idSkill + 1 : 0;
-    const idLevel = this.arrInput.length > 0 ? this.arrInput[this.arrInput.length - 1].idLevel + 1 : 0;
-    console.log("EmployeeSkillComponent -> addField -> idLevel", idLevel)
-    console.log("EmployeeSkillComponent -> addField -> id", idSkill)
-
-    const control = {
-      idSkill,
-      idLevel,
-      skill: `skill${idSkill}`,
-      level: `level${idLevel}`,
-    };
-    const index = this.arrInput.push(control);
-    console.log(this.arrInput[this.arrInput.length - 1]);
+  saveSkill(): void {
+    console.log("EmployeeSkillComponent -> saveSkill -> this.skillForms", this.skillForms)
+    this.empSkillService.saveSkill(this.skillForms.value).subscribe(
+      () => alert('successfully'),
+      err => {
+        console.log("EmployeeSkillComponent -> saveSkill -> err", err)
+      }
+    )
   }
 
-  removeField(i: { idSkill: number; skill: string; idLevel: number; level: string }, e: MouseEvent): void {
-    e.preventDefault();
-    if (this.arrInput.length > 1) {
-      const index = this.arrInput.indexOf(i);
-      this.arrInput.splice(index, 1);
-      console.log(this.arrInput);
-    }
+  get skillForms() {
+    const skillForm = this.myForm.get('data') as FormArray;
+    return skillForm;
+  }
+
+  addForm() {
+
+    const record = this.fb.group({ 
+      skill: [{ id: 0 }],
+      level: [{ id: 0 }],
+      employee: this.tokenService.getUser().id
+    })
+
+    this.skillForms.push(record);
+  }
+
+  deleteForm(i) {
+    console.log("EmployeeSkillComponent -> deleteForm -> i", i)
+    this.skillForms.removeAt(i)
   }
 }

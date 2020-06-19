@@ -8,10 +8,11 @@ import { Employee, EmpSkill } from './employee';
 import { Department } from '../department/department';
 import { Status } from '../status/status';
 import { Role } from '../role/role';
+import { TokenStorageService } from '../common/services/token-storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
-    private mainUrl = 'http://192.168.4.203:8080/';
+    private mainUrl = 'http://192.168.4.203:8080';
     private employeeUrl = 'http://192.168.4.203:8080/employees';
 
     httpOptions = {
@@ -21,7 +22,8 @@ export class EmployeeService {
     };
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private tokenService: TokenStorageService
     ) { }
 
     getEmployees(page, size): Observable<Employee[]> {
@@ -38,15 +40,15 @@ export class EmployeeService {
 
     // Get table relationship
     getDepartments(): Observable<Department[]> {
-        return this.http.get<Department[]>(`${this.mainUrl}/department-list`);
+        return this.http.get<Department[]>(`${this.mainUrl}/departments/list`);
     }
 
     getStatus(): Observable<Status[]> {
-        return this.http.get<Status[]>(`${this.mainUrl}/status-list`);
+        return this.http.get<Status[]>(`${this.mainUrl}/status/list`);
     }
 
     getRoles(): Observable<Role[]> {
-        return this.http.get<Role[]>(`${this.mainUrl}/role-list`);
+        return this.http.get<Role[]>(`${this.mainUrl}/roles/list`);
     }
 
     getSkills(): Observable<Skill[]> {

@@ -1,3 +1,4 @@
+import { AuthGuard } from './../common/guard/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
@@ -12,6 +13,7 @@ const routes: Routes = [
     {
         path: '',
         component: BrycenComponent,
+        canActivateChild: [AuthGuard],
         children: [
             {
                 path: '',

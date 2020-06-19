@@ -1,3 +1,4 @@
+import { PageNotFoundComponent } from './../page-not-found/page-not-found.component';
 import { EmployeeComponent } from './get-employee/employee.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ const routes: Routes = [
     {
         path: 'add',
         component: AddEmployeeComponent
-    }
+    },
 ]
 
 @NgModule({

@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // ant design
@@ -57,6 +58,7 @@ import { AddPermissionComponent } from './permission/add-permission/add-permissi
 import { UpdatePermissionComponent } from './permission/update-permission/update-permission.component';
 import { LevelComponent } from './level/get-level/level.component';
 import { AddLevelComponent } from './level/add-level/add-level.component';
+import { authInterceptorProviders } from './common/helpers/auth.interceptor';
 
 registerLocaleData(en);
 
@@ -108,27 +110,31 @@ registerLocaleData(en);
     AddLevelComponent,
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     // ant design
     NzMenuModule,
-    NzLayoutModule,
-    IconsProviderModule,
-    NzTableModule,
-    NzDividerModule,
-    NzButtonModule,
     NzGridModule,
-    NzDatePickerModule,
-    NzSelectModule,
-    NzDropDownModule,
     NzFormModule,
+    NzTableModule,
+    NzLayoutModule,
+    NzButtonModule,
+    NzSelectModule,
+    NzDividerModule,
+    NzDropDownModule,
+    NzDatePickerModule,
     NzPaginationModule,
+    IconsProviderModule,
     NzAutocompleteModule,
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    authInterceptorProviders,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

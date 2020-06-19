@@ -1,6 +1,6 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">List Employee</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add"><i nz-icon
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add" *ngIf="!checkRole()"><i nz-icon
                 nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
 </div>
 <hr />

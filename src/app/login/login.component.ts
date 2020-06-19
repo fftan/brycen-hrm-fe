@@ -1,10 +1,10 @@
+import { AuthService } from './../common/guard/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as CryptoJs from 'crypto-js';
 
 // Components
 import { LoginService } from './login.service';
-import { localstore } from '../helpers/defineObj';
+import { TokenStorageService } from '../common/services/token-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +12,12 @@ import { localstore } from '../helpers/defineObj';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string[] = [];
+  
 
   data = {
     username: '',
@@ -28,10 +34,16 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private route: Router,
-    private loginService: LoginService
+    private authService: AuthService,
+    private loginService: LoginService,
+    private tokenStorage: TokenStorageService
   ) { }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      this.roles = this.tokenStorage.getUser().roles;
+    }
   }
 
   onChangeValue = (event: any) => {
@@ -65,17 +77,23 @@ export class LoginComponent implements OnInit {
     this.validateValue.username = '';
     this.validateValue.password = '';
     this.validateResult = '';
-    this.loginService.login(data.username, data.password).subscribe(
-      (emp: any) => {
-          const jsonEmployee = JSON.stringify(emp);
-          const encryptData = CryptoJs.AES.encrypt(jsonEmployee, localstore.scretkey.trim()).toString();
-          localStorage.setItem(localstore.USER_LOGIN, encryptData);
-          this.route.navigate(['/brycen']);
+    this.loginService.login(data).subscribe(
+      (data: any) => {
+        this.tokenStorage.saveToken(data.token);
+        this.tokenStorage.saveUser(data);
+
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+        this.authService.login(this.isLoggedIn);
       },
       err => {
-        console.log("LoginComponent -> onClick -> err", err)
+      console.log("LoginComponent -> onClick -> err", err)
+        alert('Username or password wrong');
+        this.isLoginFailed = true;
+        this.isLoggedIn = false;
+        this.authService.login(this.isLoggedIn);
+        this.route.navigate(['/login']);
       }
-    )
+    );
   }
-
 }

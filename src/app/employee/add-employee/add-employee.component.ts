@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/common/guard/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 // Components
@@ -64,7 +65,11 @@ export class AddEmployeeComponent implements OnInit {
     }
   }
 
-  constructor(private empService: EmployeeService) { }
+  constructor(
+    private empService: EmployeeService,
+    private authService: AuthService,
+    
+    ) { }
 
   ngOnInit(): void {
     this.getDepartments();
@@ -172,7 +177,7 @@ export class AddEmployeeComponent implements OnInit {
     this.empService.addEmployee(data).subscribe(
       emp => alert('successfully!'),
       err => {
-        console.log("AddEmployeeComponent -> addEmployee -> err", err)
+        this.authService.isError(err);
       }
     )
   }

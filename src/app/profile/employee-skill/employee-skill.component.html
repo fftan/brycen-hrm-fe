@@ -1,10 +1,20 @@
-<form *ngFor="let i of arrInput">
-    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a skill" [(ngModel)]="i.skill" [attr.id]="i.idSkill" [name]="i.skill">
+<form [formGroup]="myForm">
+
+  <div formArrayName="data">
+
+    <div *ngFor="let phone of skillForms.controls; let i=index" [formGroupName]="i">
+      <nz-select formControlName="skill">
         <nz-option [nzValue]="skill.id" *ngFor="let skill of skillsSuggest" [nzLabel]="skill.name"></nz-option>
-    </nz-select>
-    <nz-select nzShowSearch nzAllowClear nzPlaceHolder="Select a level" [(ngModel)]="i.level" [attr.id]="i.idLevel" [name]="i.level">
-      <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
-  </nz-select>
-  <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(i, $event)"></i>
+      </nz-select>
+      <nz-select formControlName="level">
+        <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
+      </nz-select>
+      <input formControlName="employee" style="display: none;"/>
+      <button (click)="deleteForm(i)">Delete</button>
+    </div>
+  </div>
+
+  <button (click)="addForm()">Add Field</button>
+
 </form>
-<button nz-button nzType="primary" (click)="addField($event)">add</button>
+<button nz-button nzType="primary" class="btnAddField" (click)="saveSkill()">Save</button>

@@ -12,25 +12,25 @@
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/brycen/department">Department</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/skill">Skill</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/employee">Employee</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/role">Role</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/permission">Permission</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/status">Status</a>
           </li>
           <li nz-menu-item nzMatchRouter>
             <a routerLink="/brycen/task">Task</a>
           </li>
-          <li nz-menu-item nzMatchRouter>
+          <li nz-menu-item nzMatchRouter *ngIf="!checkRole()">
             <a routerLink="/brycen/type-project">Type Of Project</a>
           </li>
           <li nz-menu-item nzMatchRouter>

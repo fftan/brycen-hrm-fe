@@ -16,6 +16,6 @@ export class DashboardService {
     }
 
     getDepartment(): Observable<[]> {
-        return this.http.get<[]>(`${this.mainUrl}/departments`);
+        return this.http.get<[]>(`${this.mainUrl}/departments/list`);
     }
 }

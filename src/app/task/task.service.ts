@@ -31,6 +31,6 @@ export class TaskService {
     // Relationship
     getType(): Observable<[]> {
         console.log("TaskService -> constructor -> mainUrl", this.mainUrl)
-        return this.http.get<[]>(`${this.mainUrl}/project-types`);
+        return this.http.get<[]>(`${this.mainUrl}/project-types/list`);
     }
 }

@@ -18,7 +18,7 @@ export class LoginService {
         private http: HttpClient
     ) { }
 
-    login(username, password): Observable<Employee[]> {
-        return this.http.get<Employee[]>(`${this.employeeUrl}?username=${username}&password=${password}`);
+    login(data): Observable<{}> {
+        return this.http.post<{}>(`${this.employeeUrl}`, data, this.httpOptions);
     }
 }
