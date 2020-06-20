@@ -1,12 +1,12 @@
-import { map, catchError } from 'rxjs/operators';
-import { Employee } from './../employee/employee';
 import { Observable, of } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+// Components
+import { url } from '../common/helpers/defineUrl';
+
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-    private employeeUrl = 'http://192.168.4.203:8080/login';
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -19,6 +19,6 @@ export class LoginService {
     ) { }
 
     login(data): Observable<{}> {
-        return this.http.post<{}>(`${this.employeeUrl}`, data, this.httpOptions);
+        return this.http.post<{}>(`${url.mainUrl}/login`, data, this.httpOptions);
     }
 }

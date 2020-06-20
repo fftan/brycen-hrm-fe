@@ -8,7 +8,7 @@ import { Employee } from './../employee/employee';
 import { Department } from './../department/department';
 import { ProfileService } from './profile.service';
 import { Role } from '../role/role';
-import { getUser } from '../common/helpers/defineFunc';
+// import { getUser } from '../common/helpers/defineFunc';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +16,7 @@ import { getUser } from '../common/helpers/defineFunc';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user = getUser();
+  // user = getUser();
 
   userInfo: Employee;
 
@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     full_name: '',
     id_card: '',
     gender: '',
-  }
+  };
 
   data = {
     full_name: '',
@@ -38,12 +38,12 @@ export class ProfileComponent implements OnInit {
     phone: '',
     email: '',
     position: '',
-  }
+  };
 
   constructor(private profileSerivce: ProfileService) { }
 
   ngOnInit(): void {
-    this.getProfile(this.user.id);
+    this.getProfile(1);
   }
 
   onChangeValue(event: any) {
@@ -121,6 +121,6 @@ export class ProfileComponent implements OnInit {
         console.log("ProfileComponent -> getProfile -> err", err)
 
       }
-    )
+    );
   }
 }

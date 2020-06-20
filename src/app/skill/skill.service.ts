@@ -1,15 +1,15 @@
 import { tap, catchError } from 'rxjs/operators';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 // Components
 import { Skill } from './skill';
 import { MessageService } from './../department/message.service';
 import { Observable, of } from 'rxjs';
+import { url } from '../common/helpers/defineUrl';
 
 @Injectable({ providedIn: 'root' })
 export class SkillService {
-    private skillUrl = 'http://192.168.4.203:8080/skills';
 
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,16 +21,15 @@ export class SkillService {
     ) { }
 
     getSkill(page, size): Observable<Skill[]> {
-    console.log("SkillService -> page", page)
-        return this.http.get<Skill[]>(`${this.skillUrl}?page=${page}&size=${size}`);
+        return this.http.get<Skill[]>(`${url.skillUrl}?page=${page}&size=${size}`);
     }
 
     addSkill(skill: Skill): Observable<Skill> {
-        return this.http.post<Skill>(`${this.skillUrl}/create`, skill, this.httpOptions);
+        return this.http.post<Skill>(`${url.skillUrl}/create`, skill, this.httpOptions);
     }
 
     updateSkill(skill: Skill): Observable<Skill> {
-        return this.http.put<Skill>(`${this.skillUrl}/${skill.id}`, skill, this.httpOptions);
+        return this.http.put<Skill>(`${url.skillUrl}/${skill.id}`, skill, this.httpOptions);
     }
 
     private handleError<T>(operation = 'operation', result?: T) {

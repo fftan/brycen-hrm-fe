@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../common/services/token-storage.service';
 
 // Components
-import { getUser } from '../common/helpers/defineFunc';
 
 @Component({
   selector: 'app-brycen',
@@ -13,7 +12,7 @@ import { getUser } from '../common/helpers/defineFunc';
 export class BrycenComponent implements OnInit {
   isCollapsed = false;
 
-  title = getUser().full_name;
+  // title = getUser().full_name;
   roles = [];
 
   constructor(
@@ -26,7 +25,8 @@ export class BrycenComponent implements OnInit {
   }
 
   checkRole = () => {
-      return this.tokenService.getUser().roles.find(x => x === "EMPLOYEE");
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN');
+    return checkRole !== 'ADMIN';
   }
 
   logout() {

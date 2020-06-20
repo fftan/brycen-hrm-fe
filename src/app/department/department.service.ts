@@ -6,10 +6,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 // Components
 import { MessageService } from './message.service';
 import { Department } from './department';
+import { url } from '../common/helpers/defineUrl';
 
 @Injectable({ providedIn: 'root' })
 export class DepartmentService {
-    private departmentUrl = "http://192.168.4.203:8080/departments";
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -20,14 +20,14 @@ export class DepartmentService {
     ) { }
 
     getDepartments(page, size): Observable<Department[]> {
-        return this.http.get<Department[]>(`${this.departmentUrl}?page=${page}&size=${size}`).pipe(
+        return this.http.get<Department[]>(`${url.departmentUrl}?page=${page}&size=${size}`).pipe(
             tap(_ => this.log('fetched department')),
             catchError(this.handleError<Department[]>('getDepartments', []))
         );
     }
 
     addDepartment(data): Observable<Department[]> {
-        return this.http.post<Department[]>(`${this.departmentUrl}/create`, data, this.httpOptions);
+        return this.http.post<Department[]>(`${url.departmentUrl}/create`, data, this.httpOptions);
     }
 
     // catch error, show message

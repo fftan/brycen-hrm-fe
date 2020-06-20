@@ -9,11 +9,10 @@ import { Department } from '../department/department';
 import { Status } from '../status/status';
 import { Role } from '../role/role';
 import { TokenStorageService } from '../common/services/token-storage.service';
+import {url} from '../common/helpers/defineUrl';
 
 @Injectable({ providedIn: 'root' })
 export class EmployeeService {
-    private mainUrl = 'http://192.168.4.203:8080';
-    private employeeUrl = 'http://192.168.4.203:8080/employees';
 
     httpOptions = {
         headers: new HttpHeaders({
@@ -27,35 +26,35 @@ export class EmployeeService {
     ) { }
 
     getEmployees(page, size): Observable<Employee[]> {
-        return this.http.get<Employee[]>(`${this.employeeUrl}?page=${page}&size=${size}`);
+        return this.http.get<Employee[]>(`${url.employeeUrl}?page=${page}&size=${size}`);
     }
 
     addEmployee(emp: Employee): Observable<Employee> {
-        return this.http.post<Employee>(`${this.employeeUrl}/create`, emp, this.httpOptions);
+        return this.http.post<Employee>(`${url.employeeUrl}/create`, emp, this.httpOptions);
     }
 
     updateEmployee(emp: Employee): Observable<Employee> {
-        return this.http.put<Employee>(`${this.employeeUrl}/${emp.id}`, this.httpOptions);
+        return this.http.put<Employee>(`${url.employeeUrl}/${emp.id}`, this.httpOptions);
     }
 
     // Get table relationship
     getDepartments(): Observable<Department[]> {
-        return this.http.get<Department[]>(`${this.mainUrl}/departments/list`);
+        return this.http.get<Department[]>(`${url.mainUrl}/departments/list`);
     }
 
     getStatus(): Observable<Status[]> {
-        return this.http.get<Status[]>(`${this.mainUrl}/status/list`);
+        return this.http.get<Status[]>(`${url.mainUrl}/status/list`);
     }
 
     getRoles(): Observable<Role[]> {
-        return this.http.get<Role[]>(`${this.mainUrl}/roles/list`);
+        return this.http.get<Role[]>(`${url.mainUrl}/roles/list`);
     }
 
     getSkills(): Observable<Skill[]> {
-        return this.http.get<Skill[]>(`${this.mainUrl}/skills`);
+        return this.http.get<Skill[]>(`${url.mainUrl}/skills`);
     }
 
     getEmpSkills(): Observable<EmpSkill[]> {
-        return this.http.get<EmpSkill[]>(`${this.mainUrl}/employee-skill`);
+        return this.http.get<EmpSkill[]>(`${url.mainUrl}/employee-skill`);
     }
 }

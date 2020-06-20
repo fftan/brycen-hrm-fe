@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  
+
 
   data = {
     username: '',
@@ -87,7 +87,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.isLoggedIn);
       },
       err => {
-      console.log("LoginComponent -> onClick -> err", err)
+        console.log("LoginComponent -> onClick -> err", err)
         alert('Username or password wrong');
         this.isLoginFailed = true;
         this.isLoggedIn = false;

@@ -23,38 +23,39 @@ export class AuthService {
   ) { }
 
   public login(isLoggedIn): boolean {
+    console.log("AuthService -> login -> isLoggedIn", isLoggedIn)
     this.isLoggedIn = isLoggedIn;
     if (isLoggedIn === true) {
       this.roles = this.tokenService.getUser().roles;
-      console.log("AuthService -> login -> this.roles", this.roles)
-      const roleAdmin = this.roles.find(x => x === "ADMIN");
-      const roleEmp = this.roles.find(x => x === "EMPLOYEE");
+      console.log('AuthService -> login -> this.roles', this.roles);
+      const roleAdmin = this.roles.find(x => x === 'ADMIN');
+      const roleEmp = this.roles.find(x => x === 'EMPLOYEE');
       if (roleAdmin) {
-        this.router.navigate(['/brycen'])
+        this.router.navigate(['/brycen']);
       } else {
-        this.router.navigate(['/brycen/profile'])
+        this.router.navigate(['/brycen/profile']);
       }
     }
     return this.isLoggedIn;
   }
 
   checkRole = () => {
-    return this.tokenService.getUser().roles.find(x => x === "EMPLOYEE");
+    return this.tokenService.getUser().roles.find(x => x === 'EMPLOYEE');
   }
 
   isLogin(): boolean {
     const checkLogin = this.tokenService.getUser() === null;
     if (checkLogin) {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
     return this.tokenService.getUser() !== null;
   }
 
   isError(err): void {
-    console.log("AuthService -> isError -> err", err)
-    if(err.status === 403){
-      this.router.navigate(['/brycen/**'])
-    } 
+    console.log('AuthService -> isError -> err', err);
+    if (err.status === 403) {
+      this.router.navigate(['/brycen/**']);
+    }
   }
 
   logout(): void {
