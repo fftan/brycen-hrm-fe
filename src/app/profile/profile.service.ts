@@ -14,6 +14,6 @@ export class ProfileService {
     constructor(private http: HttpClient) { }
 
     getUserById(id: number): Observable<Employee> {
-        return this.http.get<Employee>(`${url.employeeUrl}/employees/${id}`);
+        return this.http.get<Employee>(`${url.employeeUrl}/${id}`);
     }
 }

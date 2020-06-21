@@ -2,14 +2,19 @@
 
   <div formArrayName="data">
 
-    <div *ngFor="let phone of skillForms.controls; let i=index" [formGroupName]="i">
-      <nz-select formControlName="skill">
-        <nz-option [nzValue]="skill.id" *ngFor="let skill of skillsSuggest" [nzLabel]="skill.name"></nz-option>
-      </nz-select>
-      <nz-select formControlName="level">
-        <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
-      </nz-select>
-      <input formControlName="employee" style="display: none;"/>
+    <div *ngFor="let record of skillForms.controls; let i=index" [formGroupName]="i">
+        <nz-form-control nz-col nzSpan="10" formGroupName="skill">
+          <nz-select formControlName="id">
+            <nz-option [nzValue]="skill.id" *ngFor="let skill of skillsSuggest" [nzLabel]="skill.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+
+        <nz-form-control nz-col nzSpan="10" formGroupName="level">
+          <nz-select formControlName="id">
+            <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      <!-- <input formControlName="employee" style="display: none;"/> -->
       <button (click)="deleteForm(i)">Delete</button>
     </div>
   </div>
