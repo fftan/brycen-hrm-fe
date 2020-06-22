@@ -15,8 +15,9 @@ export class TaskService {
 
     constructor(private http: HttpClient) { }
 
-    getTasks(page: number, size: number): Observable<Task[]> {
-        return this.http.get<Task[]>(`${url.taskUrl}?page=${page}&size=${size}`);
+    getTasks(page: number, size: number, params): Observable<Task[]> {
+    console.log("TaskService -> constructor -> params", params)
+        return this.http.get<Task[]>(`${url.taskUrl}?page=${page}&size=${size}&type_id=${params}`);
     }
 
     addTask(data: Task): Observable<Task> {
@@ -30,5 +31,10 @@ export class TaskService {
     // Relationship
     getType(): Observable<[]> {
         return this.http.get<[]>(`${url.mainUrl}/project-types/list`);
+    }
+
+    // Search
+    getTaskByTypeId(id, page, size): Observable<[]> {
+        return this.http.get<[]>(`${url.taskUrl}/search/${id}?page=${page}&size=${size}`);
     }
 }

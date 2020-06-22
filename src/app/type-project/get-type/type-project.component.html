@@ -1,6 +1,15 @@
 <div nz-row>
-    <h2 nz-col nzSpan="12">List Type Of Project</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/type-project/add"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new type</a></button>
+    <form nz-col nzSpan="12">
+        <div nz-row nzAlign="middle">
+            <h2>List Type Of Project</h2>
+            <div class="searchFullName">
+                <input type="text" name="full_name" placeholder="Enter full name" />
+                <i nz-icon nzType="search"></i>
+            </div>
+        </div>
+    </form>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/type-project/add"><i
+                nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new type</a></button>
 </div>
 <hr />
 <nz-table nzTemplateMode nzTableLayout="fixed" style="min-height: 80%; margin-bottom: 20px;">
@@ -23,4 +32,5 @@
         </tr>
     </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem" (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem"
+    (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>

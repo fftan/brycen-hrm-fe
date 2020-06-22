@@ -7,3 +7,24 @@ nz-select {
 .btnAddField {
   width: 100px;
 }
+
+.btnDelete {
+  font-size: 22px;
+  color: red;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.btnDelete:hover {
+  color: #ff7675;
+  cursor: pointer;
+}
+
+.btnAdd {
+  font-size: 22px;
+}
+
+.btnAdd:hover {
+  color: #636e72;
+  cursor: pointer;
+}

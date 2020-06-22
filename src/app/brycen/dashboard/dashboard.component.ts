@@ -31,7 +31,6 @@ export class DashboardComponent implements OnInit {
   getData = () => {
     this.dashboardService.getData().subscribe(
       (data: any) => {
-        console.log("DashboardComponent -> getData -> data", data)
         this.projects = data['task'];
         this.employees = data['emp'];
         this.filterData(data)
@@ -52,7 +51,6 @@ export class DashboardComponent implements OnInit {
   }
 
   filterData = (data) => {
-    console.log("DashboardComponent -> filterData -> data", data)
     this.offshoreProjects = data.task.filter(x => x.offshore === true);
     this.products = data.task.filter(x => x.product === true);
     this.OJTEmployee = data.emp.filter(x => x.status.id === 1);

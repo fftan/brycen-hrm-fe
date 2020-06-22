@@ -14,10 +14,6 @@ export class EmployeeComponent implements OnInit {
 
   employees: Employee[];
 
-  skills: Skill[];
-
-  empSkills: EmpSkill[];
-
   totalItem = 0;
 
   pageIndex = 1;
@@ -45,6 +41,7 @@ export class EmployeeComponent implements OnInit {
     this.empService.getEmployees(page, size).subscribe(
       (emp: any) => {
         this.employees = emp.content;
+        console.log("EmployeeComponent -> getEmployees -> this.employees", this.employees)
         this.totalItem = emp.totalElements;
       },
       err => {

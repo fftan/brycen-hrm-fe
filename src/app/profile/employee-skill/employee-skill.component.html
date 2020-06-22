@@ -2,24 +2,24 @@
 
   <div formArrayName="data">
 
-    <div *ngFor="let record of skillForms.controls; let i=index" [formGroupName]="i">
-        <nz-form-control nz-col nzSpan="10" formGroupName="skill">
-          <nz-select formControlName="id">
-            <nz-option [nzValue]="skill.id" *ngFor="let skill of skillsSuggest" [nzLabel]="skill.name"></nz-option>
-          </nz-select>
-        </nz-form-control>
+    <div *ngFor="let record of skillForms.controls; let i=index" [formGroupName]="i" nz-row nzAlign="middle">
+      <nz-form-control formGroupName="skill" nz-col nzSpan="4">
+        <nz-select formControlName="id">
+          <nz-option [nzValue]="skill.id" *ngFor="let skill of skillsSuggest" [nzLabel]="skill.name"></nz-option>
+        </nz-select>
+      </nz-form-control>
 
-        <nz-form-control nz-col nzSpan="10" formGroupName="level">
-          <nz-select formControlName="id">
-            <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
-          </nz-select>
-        </nz-form-control>
-      <!-- <input formControlName="employee" style="display: none;"/> -->
-      <button (click)="deleteForm(i)">Delete</button>
+      <nz-form-control formGroupName="level" nz-col nzSpan="4">
+        <nz-select formControlName="id">
+          <nz-option [nzValue]="level.id" *ngFor="let level of levelsSuggest" [nzLabel]="level.name"></nz-option>
+        </nz-select>
+      </nz-form-control>
+      <div nz-col nzSpan="4" style="margin-bottom: 20px;">
+        <i nz-icon nzType="minus-circle-o" class="btnDelete" (click)="deleteForm(i)"></i>
+        <i nz-icon nzType="plus-circle-o" class="btnAdd" (click)="addForm()"></i>
+      </div>
     </div>
   </div>
-
-  <button (click)="addForm()">Add Field</button>
 
 </form>
 <button nz-button nzType="primary" class="btnAddField" (click)="saveSkill()">Save</button>

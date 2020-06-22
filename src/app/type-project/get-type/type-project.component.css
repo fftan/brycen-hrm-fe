@@ -1,0 +1,20 @@
+nz-select {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 250px;
+}
+
+.searchFullName {
+  height: 35px;
+  width: 200px;
+  padding: 4px 10px;
+  margin-left: 20px;
+  border: 1px solid #bbbbbb;
+  border-radius: 2px;
+}
+
+.searchFullName input {
+  border:none;
+  outline: none;
+  margin-right: 10px;
+}

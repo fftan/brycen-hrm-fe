@@ -1,6 +1,19 @@
 <div nz-row>
-    <h2 nz-col nzSpan="12">List tasks</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/task/add"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new task</a></button>
+    <form nz-col nzSpan="16">
+        <div nz-row nzAlign="middle">
+            <h2>List tasks</h2>
+            <button nz-button nzType="primary" style="margin: 0 20px;" (click)="getTasks(pageIndex, pageSize, type_id)">
+                <i nz-icon nzType="search"></i>
+                Tìm kiếm
+            </button>
+            <nz-select name="type" [(ngModel)]="type_id">
+                <nz-option [nzValue]="0" nzLabel="-- Choose Type --"></nz-option>
+                <nz-option [nzValue]="type.id" *ngFor="let type of types" [nzLabel]="type.type"></nz-option>
+            </nz-select>
+        </div>
+    </form>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="4"><a routerLink="/brycen/task/add"><i nz-icon
+                nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new task</a></button>
 </div>
 <hr />
 <nz-table nzTemplateMode nzTableLayout="fixed" style="min-height: 80%; margin-bottom: 20px;">
@@ -25,4 +38,5 @@
         </tr>
     </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem" (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="pageIndex" [nzPageSize]="pageSize" [nzTotal]="totalItem"
+    (nzPageIndexChange)="getCurrenIndex($event)"></nz-pagination>

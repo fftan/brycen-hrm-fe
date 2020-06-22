@@ -1,7 +1,8 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">List Employee</h2>
-    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add" *ngIf="!checkRole()"><i nz-icon
-                nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new employee</a></button>
+    <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add"
+            *ngIf="!checkRole()"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new
+            employee</a></button>
 </div>
 <hr />
 <nz-table style="height: 80%; margin-bottom: 20px;" nzTableLayout="fixed" nzTemplateMode>
@@ -11,7 +12,7 @@
             <th>Full name</th>
             <th>Id card</th>
             <th>Gender</th>
-            <th>Skill</th>
+            <!-- <th>Skill</th> -->
             <th>Status</th>
             <th>Department</th>
             <th>Actions</th>
@@ -23,17 +24,17 @@
             <td>{{ employee.full_name }}</td>
             <td>{{ employee.id_card }}</td>
             <td>{{ employee.gender ? male : female }}</td>
-            <td>
-        <tr *ngFor="let skills of employee['employees']">{{ skills.skill.name }}</tr>
-        </td>
-        <td>{{ employee.status }}</td>
+            <!-- <td>
+                <tr *ngFor="let skills of employee['employee_skill']">{{ skills.skill.name }}</tr>
+            </td> -->
+            <td>{{ employee.status }}</td>
 
-        <td>{{ employee.department }}</td>
-        <td>
+            <td>{{ employee.department }}</td>
+            <td>
             <a>update</a>
             <nz-divider nzType="vertical"></nz-divider>
             <a>Disable</a>
-        </td>
+            </td>
         </tr>
     </tbody>
 </nz-table>
