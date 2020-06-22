@@ -12,7 +12,7 @@ import { url } from '../common/helpers/defineUrl';
 export class ProfileService {
 
     httpOptions = {
-        headers: new HttpHeaders({'Content-Type': 'application/json'})
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
 
     constructor(private http: HttpClient) { }
@@ -21,7 +21,8 @@ export class ProfileService {
         return this.http.get<Employee>(`${url.employeeUrl}/${id}`);
     }
 
-    updateProfile(data): Observable<{}>{
-        return this.http.post<{}>(`${url.employeeUrl}/create`, data, this.httpOptions);
+    updateProfile(data, id): Observable<{}> {
+        console.log("ProfileService -> constructor -> data", data)
+        return this.http.put<{}>(`${url.employeeUrl}/${id}`, data, this.httpOptions);
     }
 }

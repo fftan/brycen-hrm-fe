@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
 
   data = {
     id: 0,
+    username: '',
     full_name: '',
     id_card: 0,
     birthday: Date.now(),
@@ -41,8 +42,8 @@ export class ProfileComponent implements OnInit {
     email: '',
     position: '',
     address: '',
-    department: {},
-    status: {},
+    department: 0,
+    status: 0,
   };
 
   constructor(private profileSerivce: ProfileService, private tokeService: TokenStorageService) { }
@@ -85,12 +86,11 @@ export class ProfileComponent implements OnInit {
 
   getProfile = () => {
     this.userId = this.tokeService.getUser().id;
-    console.log("ProfileComponent -> getProfile -> this.userId", this.userId)
     this.profileSerivce.getUserById(this.userId).subscribe(
       (profile: any) => {
-      console.log("ProfileComponent -> getProfile -> profile", profile)
         this.userInfo = profile;
         this.data.id = this.userInfo.id;
+        this.data.username = this.userInfo.username;
         this.data.full_name = this.userInfo.full_name;
         this.data.id_card = this.userInfo.id_card;
         this.data.birthday = this.userInfo.birthday;
@@ -98,8 +98,8 @@ export class ProfileComponent implements OnInit {
         this.data.phone = this.userInfo.phone;
         this.data.email = this.userInfo.email;
         this.data.position = this.userInfo.position;
-        this.data.department['id'] = this.userInfo.department.id
-        this.data.status['id'] = this.userInfo.status.id
+        this.data.department = this.userInfo.department.id;
+        this.data.status = this.userInfo.status.id;
       },
       err => {
         console.log("ProfileComponent -> getProfile -> err", err)
@@ -133,12 +133,12 @@ export class ProfileComponent implements OnInit {
     this.validateValue.gender = '';
     this.validateResult = '';
 
-    this.profileSerivce.updateProfile(data).subscribe(
+    this.profileSerivce.updateProfile(data, this.userId).subscribe(
       () => alert('successfully!'),
       err => {
-      console.log("ProfileComponent -> updateProfile -> err", err)
-        
+        console.log("ProfileComponent -> updateProfile -> err", err)
+
       }
-    )
+    );
   }
 }

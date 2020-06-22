@@ -12,16 +12,16 @@ import { TokenStorageService } from '../common/services/token-storage.service';
 export class BrycenComponent implements OnInit {
   isCollapsed = false;
 
-  // title = getUser().full_name;
+  username: string;
+
   roles = [];
 
   constructor(
     private tokenService: TokenStorageService,
-    private router: Router
   ) { }
 
   ngOnInit() {
-
+    this.username = this.tokenService.getUser().username;
   }
 
   checkRole = () => {
