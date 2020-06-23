@@ -16,7 +16,7 @@
             <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
             <td>{{ skill.name }}</td>
             <td>
-                <a>update</a>
+                <a (click)="navigateToUpdate(skill)">update</a>
                 <nz-divider nzType="vertical"></nz-divider>
                 <a>Disable</a>
             </td>

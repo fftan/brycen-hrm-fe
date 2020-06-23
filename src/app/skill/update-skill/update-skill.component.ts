@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SkillService } from '../skill.service';
 import { Skill } from '../skill';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-skill',
@@ -8,45 +9,42 @@ import { Skill } from '../skill';
   styleUrls: ['./update-skill.component.css']
 })
 export class UpdateSkillComponent implements OnInit {
+
+
   data = {
     id: 0,
     name: '',
-    level: 0,
   }
+
+  dataId = 0;
+
   isValidId = '';
   isValidName = '';
-  isValidLevel = '';
+  param = {};
 
-  constructor(private skillService: SkillService) { }
+  constructor(
+    private skillService: SkillService,
+    private router: Router,
+    private activeRoute: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
+    const id = parseInt(this.activeRoute.snapshot.paramMap.get('id'));
+    this.dataId = id;
   }
 
   updateSkill = (data) => {
-    if (!data.id) {
-      this.isValidId = "Vui Lòng id";
-      this.isValidName = '';
-      this.isValidLevel = '';
-      return;
-    }
 
     if (data.name.length === 0) {
       this.isValidName = "Vui Lòng nhập tên";
-      this.isValidId = '';
-      this.isValidLevel = '';
-      return;
-    }
-
-    if (!data.level) {
-      this.isValidLevel = 'Vui lòng nhập level';
-      this.isValidName = '';
       this.isValidId = '';
       return;
     }
 
     this.isValidId = '';
     this.isValidName = '';
-    this.isValidLevel = '';
+    data.id = this.dataId;
     this.skillService.updateSkill(data as Skill).subscribe(
       skill => {
         alert(`Create new successfully! ${skill.name}`)
@@ -57,15 +55,7 @@ export class UpdateSkillComponent implements OnInit {
     )
   }
 
-  onChangeId(event: any) {
-    this.data.id = event.target.value;
-  }
-
   onChangeName(event: any) {
     this.data.name = event.target.value;
-  }
-
-  onChangeLevel(event: any) {
-    this.data.level = event.target.value;
   }
 }

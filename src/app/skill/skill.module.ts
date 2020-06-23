@@ -11,24 +11,7 @@ registerLocaleData(en);
     declarations: [
     ],
     imports: [
-        //   BrowserModule,
         SkillRoutingModule,
-        //   FormsModule,
-        //   HttpClientModule,
-        //   BrowserAnimationsModule,
-        //   // ant design
-        //   NzMenuModule,
-        //   NzLayoutModule,
-        //   IconsProviderModule,
-        //   NzTableModule,
-        //   NzDividerModule,
-        //   NzButtonModule,
-        //   NzGridModule,
-        //   NzDatePickerModule,
-        //   NzSelectModule,
-        //   NzDropDownModule,
-        //   NzFormModule,
-        //   NzPaginationModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: en_US }],
     bootstrap: [SkillComponent]

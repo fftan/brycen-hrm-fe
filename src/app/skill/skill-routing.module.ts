@@ -14,10 +14,10 @@ const routes: Routes = [
         component: AddSkillComponent
     },
     {
-        path: 'update',
+        path: ':id',
         component: UpdateSkillComponent
     }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
