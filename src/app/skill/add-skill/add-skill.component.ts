@@ -2,6 +2,8 @@ import { SkillService } from './../skill.service';
 import { Component, OnInit } from '@angular/core';
 import { Skill } from '../skill';
 
+import { url } from '../../common/helpers/defineUrl';
+
 @Component({
   selector: 'app-add-skill',
   templateUrl: './add-skill.component.html',
@@ -12,27 +14,38 @@ export class AddSkillComponent implements OnInit {
   levelValue = 0;
   isValidName = '';
   isValidLevel = '';
-  
-  constructor(private skillService: SkillService) { }
-  
+
+  skills: [];
+
+  props = {
+    urlSkill: url.skillUrl,
+    name: 'sdsdsdsdsds'
+  }
+
+  data = [];
+  checkedItem = {};
+
+  constructor(private skillService: SkillService) {
+
+  }
+
   ngOnInit(): void {
+    this.getSkills(1, 2);
+  }
+
+  getSkills(page: any, size: any): void {
+    this.skillService.getSkill(page, size).subscribe((skills: any) => {
+      this.skills = skills.content;
+    });
   }
 
   addSkill = (name: string, level: number) => {
     if (name.length === 0) {
       this.isValidName = "Vui Lòng nhập tên";
-      // this.isValidLevel = '';
       return;
     }
 
-    // if (!level) {
-    //   this.isValidLevel = 'Vui lòng nhập level';
-    //   this.isValidName = '';
-    //   return;
-    // }
-
     this.isValidName = '';
-    // this.isValidLevel = '';
     this.skillService.addSkill({ name } as Skill).subscribe(
       skill => {
         alert(`Create new successfully! ${skill.name}`)
@@ -47,7 +60,14 @@ export class AddSkillComponent implements OnInit {
     this.nameValue = event.target.value;
   }
 
-  // onChangeLevel(event: any) {
-  //   this.levelValue = event.target.value;
-  // }
+  // OutPut from multi-checkbox component
+  dataRequest = (data) => {
+    this.data = data;
+  }
+
+  onCheckedItem = (item) => {
+    if (item) {
+      this.checkedItem = item;
+    }
+  }
 }

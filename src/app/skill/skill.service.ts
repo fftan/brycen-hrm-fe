@@ -11,6 +11,8 @@ import { url } from '../common/helpers/defineUrl';
 @Injectable({ providedIn: 'root' })
 export class SkillService {
 
+    skillUrl = '';
+
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -19,6 +21,10 @@ export class SkillService {
         private http: HttpClient,
         private messageService: MessageService
     ) { }
+
+    testSkill(page, size): Observable<Skill[]> {
+        return this.http.get<Skill[]>(`${this.skillUrl}?page=${page}&size=${size}`);
+    }
 
     getSkill(page, size): Observable<Skill[]> {
         return this.http.get<Skill[]>(`${url.skillUrl}?page=${page}&size=${size}`);

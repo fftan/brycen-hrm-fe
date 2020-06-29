@@ -30,11 +30,14 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.checkRole();
     this.getEmployees(this.pageIndex, this.pageSize);
   }
 
   checkRole = () => {
-    return this.tokenService.getUser().roles.find(x => x === "EMPLOYEE");
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN');
+    console.log("LevelComponent -> checkRole -> checkRole", checkRole)
+    return checkRole;
   }
 
   getEmployees = (page: any, size: any) => {

@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../../common/services/token-storage.service';
 import { LevelService } from './../level.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -16,10 +17,17 @@ export class LevelComponent implements OnInit {
 
   pageSize = 30;
 
-  constructor(private levelService: LevelService) { }
+  constructor(private levelService: LevelService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.getLevels(this.pageIndex, this.pageSize);
+    this.checkRole();
+  }
+
+  checkRole = () => {
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN' || x === "PM");
+    console.log("LevelComponent -> checkRole -> checkRole", checkRole)
+    return checkRole;
   }
 
   getLevels = (page, size) => {

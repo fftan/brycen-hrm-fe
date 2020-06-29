@@ -1,0 +1,8 @@
+<form>
+    <div *ngFor="let skill of skills" class="container_input">
+        <label>
+            <input type="checkbox" (change)="onChangeValue($event)" [name]="skill.name" class="checkbox" />
+            {{skill.name}}
+        </label>
+    </div>
+</form>

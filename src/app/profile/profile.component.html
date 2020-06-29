@@ -9,7 +9,7 @@
         <form nz-form>
             <nz-form-item  nz-row>
                 <label nz-col nzSpan="6"><span>* </span>full_name:</label>
-                <nz-form-control nz-col nzSpan="18" nzValidateStatus="error"
+                <nz-form-control nz-col nzSpan="18" [nzValidateStatus]="validateResult"
                     [(nzErrorTip)]="validateValue.full_name">
                     <input nz-input type="text" name="full_name" [(ngModel)]="data.full_name" (keyup)="onChangeValue($event)" />
                 </nz-form-control>
@@ -17,7 +17,7 @@
 
             <nz-form-item  nz-row>
                 <label nz-col nzSpan="6"><span>* </span>id_card:</label>
-                <nz-form-control nz-col nzSpan="18" nzValidateStatus="error"
+                <nz-form-control nz-col nzSpan="18" [nzValidateStatus]="validateResult"
                     [(nzErrorTip)]="validateValue.id_card">
                     <input nz-input type="text" name="id_card" [(ngModel)]="data.id_card" (keyup)="onChangeValue($event)" />
                 </nz-form-control>

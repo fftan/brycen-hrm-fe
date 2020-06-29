@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../../common/services/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { TaskService } from '../task.service';
@@ -21,11 +22,18 @@ export class TaskComponent implements OnInit {
 
   type_id = 0;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.checkRole();
     this.getType();
     this.getTasks(this.pageIndex, this.pageSize, this.type_id);
+  }
+
+  checkRole = () => {
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN' || x === "PM");
+    console.log("LevelComponent -> checkRole -> checkRole", checkRole)
+    return checkRole;
   }
 
   getTasks = (page, size, type_id) => {

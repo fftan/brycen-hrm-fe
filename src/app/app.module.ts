@@ -22,6 +22,7 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { IconsProviderModule } from './icons-provider.module';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
@@ -60,6 +61,7 @@ import { UpdatePermissionComponent } from './permission/update-permission/update
 import { LevelComponent } from './level/get-level/level.component';
 import { AddLevelComponent } from './level/add-level/add-level.component';
 import { authInterceptorProviders } from './common/helpers/auth.interceptor';
+import { MultiCheckboxComponent } from './common/components/multi-checkbox/multi-checkbox.component';
 
 registerLocaleData(en);
 
@@ -109,6 +111,7 @@ registerLocaleData(en);
     // Level
     LevelComponent,
     AddLevelComponent,
+    MultiCheckboxComponent,
   ],
   imports: [
     FormsModule,
@@ -128,6 +131,7 @@ registerLocaleData(en);
     NzSelectModule,
     NzDividerModule,
     NzDropDownModule,
+    NzCheckboxModule,
     NzDatePickerModule,
     NzPaginationModule,
     IconsProviderModule,

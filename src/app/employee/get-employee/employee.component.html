@@ -1,7 +1,7 @@
 <div nz-row>
     <h2 nz-col nzSpan="12">List Employee</h2>
     <button nz-button nzType="primary" nz-col nzSpan="4" nzOffset="8"><a routerLink="/brycen/employee/add"
-            *ngIf="!checkRole()"><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new
+            ><i nz-icon nzType="plus" nzTheme="outline" style="margin-right: 5px;"></i>Create new
             employee</a></button>
 </div>
 <hr />
@@ -15,7 +15,7 @@
             <!-- <th>Skill</th> -->
             <th>Status</th>
             <th>Department</th>
-            <th>Actions</th>
+            <th *ngIf="checkRole()">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -30,9 +30,7 @@
             <td>{{ employee.status }}</td>
 
             <td>{{ employee.department }}</td>
-            <td>
-            <a>update</a>
-            <nz-divider nzType="vertical"></nz-divider>
+            <td *ngIf="checkRole()">
             <a>Disable</a>
             </td>
         </tr>

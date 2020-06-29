@@ -10,7 +10,7 @@
       <th>Name</th>
       <th>Start day</th>
       <th>Active</th>
-      <th>Actions</th>
+      <th *ngIf="checkRole()">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
       <td>{{ department.name }}</td>
       <td>{{ department.start_day }}</td>
       <td>{{ department.active }}</td>
-      <td>
+      <td *ngIf="checkRole()">
         <a>update</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a>Disable</a>

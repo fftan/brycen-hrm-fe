@@ -110,29 +110,30 @@ export class ProfileComponent implements OnInit {
 
   updateProfile = (data) => {
     console.log("ProfileComponent -> updateProfile -> data", data)
-    // if (!data.emp.full_name) {
-    //   this.validateValue.full_name = 'Please enter full name';
-    //   this.validateResult = 'error';
-    //   return;
-    // }
+    if (!data.full_name) {
+      this.validateValue.full_name = 'Please enter full name';
+      this.validateResult = 'error';
+      return;
+    }
 
-    // if (!data.emp.id_card) {
-    //   this.validateValue.id_card = 'Please enter  id card';
-    //   this.validateResult = 'error';
-    //   return;
-    // }
+    if (!data.id_card) {
+      this.validateValue.id_card = 'Please enter  id card';
+      this.validateResult = 'error';
+      return;
+    }
 
-    // if (!data.emp.gender) {
-    //   this.validateValue.gender = 'Please enter gender';
-    //   this.validateResult = 'error';
-    //   return;
-    // }
+    if (!data.gender) {
+      this.validateValue.gender = 'Please enter gender';
+      this.validateResult = 'error';
+      return;
+    }
 
     this.validateValue.full_name = '';
     this.validateValue.id_card = '';
     this.validateValue.gender = '';
     this.validateResult = '';
 
+    console.log("ProfileComponent -> updateProfile -> this.userId", this.userId)
     this.profileSerivce.updateProfile(data, this.userId).subscribe(
       () => alert('successfully!'),
       err => {

@@ -1,3 +1,4 @@
+import { TokenStorageService } from './../../common/services/token-storage.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -19,10 +20,17 @@ export class DepartmentComponent implements OnInit {
 
   pageSize = 10;
 
-  constructor(private departmentService: DepartmentService) { }
+  constructor(private departmentService: DepartmentService, private tokenService: TokenStorageService) { }
 
   ngOnInit() {
+    this.checkRole();
     this.getDepartments(this.pageIndex, this.pageSize);
+  }
+
+  checkRole = () => {
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN' || x === "PM");
+    console.log("LevelComponent -> checkRole -> checkRole", checkRole)
+    return checkRole;
   }
 
   getDepartments(page:any, size:any): void {

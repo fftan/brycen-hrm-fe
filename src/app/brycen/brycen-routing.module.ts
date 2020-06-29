@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from '../page-not-found/page-not-found.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { EmployeeSkillComponent } from '../profile/employee-skill/employee-skill.component';
+import { MultiCheckboxComponent } from '../common/components/multi-checkbox/multi-checkbox.component';
 
 const routes: Routes = [
     {
@@ -65,9 +66,13 @@ const routes: Routes = [
                 component: DashboardComponent
             },
             {
+                path: 'multi-checkbox',
+                component: MultiCheckboxComponent
+            },
+            {
                 path: '**',
                 component: PageNotFoundComponent
-            }
+            },
         ]
     },
 ];

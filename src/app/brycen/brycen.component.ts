@@ -25,8 +25,8 @@ export class BrycenComponent implements OnInit {
   }
 
   checkRole = () => {
-    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN');
-    return checkRole !== 'ADMIN';
+    const checkRole = this.tokenService.getUser().roles.find(x => x === 'ADMIN' || x === 'PM');
+    return checkRole;
   }
 
   logout() {

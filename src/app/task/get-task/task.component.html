@@ -22,7 +22,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Type</th>
-            <th>Actions</th>
+            <th *ngIf="checkRole()">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -30,7 +30,7 @@
             <td>{{ i + 1 + (pageIndex - 1) * pageSize }}</td>
             <td>{{ task.name }}</td>
             <td>{{ task.type['type'] }}</td>
-            <td>
+            <td *ngIf="checkRole()">
                 <a>update</a>
                 <nz-divider nzType="vertical"></nz-divider>
                 <a>Disable</a>
