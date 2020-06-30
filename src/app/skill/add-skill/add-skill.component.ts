@@ -18,7 +18,7 @@ export class AddSkillComponent implements OnInit {
   skills: [];
 
   props = {
-    urlSkill: url.skillUrl,
+    urlSkill: `${url.skillUrl}/list`,
     name: 'sdsdsdsdsds'
   }
 

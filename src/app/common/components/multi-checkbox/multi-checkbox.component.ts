@@ -21,14 +21,13 @@ export class MultiCheckboxComponent implements OnInit, OnChanges, DoCheck {
   @Input() localArray: [];
   @Input() arrayFromUrl: string;
   @Input() showCheckedItem = false;
+  @Input() itemOfLine = 6;
 
   // OutPut
   @Output() allItem = new EventEmitter<any[]>();
   @Output() item = new EventEmitter<{}>();
 
-  skills: [];
-
-  checked = true;
+  data: [];
 
   dataRequest = [];
 
@@ -38,23 +37,23 @@ export class MultiCheckboxComponent implements OnInit, OnChanges, DoCheck {
 
   // Lifecycle
   ngOnChanges(changes: SimpleChanges): void {
-    this.testSkills();
+    this.getData();
   }
 
   ngOnInit(): void { }
   ngDoCheck(): void { }
 
   // API Get
-  testSkills(): void {
+  getData(): void {
     let urlSkill = this.arrayFromUrl;
     if (urlSkill && urlSkill.length > 0) {
-      this.multiCheckboxService.getSkills(urlSkill).subscribe(
+      this.multiCheckboxService.getData(urlSkill).subscribe(
         (data: any) => {
-          this.skills = data;
+          this.data = data;
         }
       )
     } else {
-      this.skills = this.localArray;
+      this.data = this.localArray;
     }
   }
 
@@ -62,7 +61,7 @@ export class MultiCheckboxComponent implements OnInit, OnChanges, DoCheck {
   onChangeValue = (event: any) => {
     const name = event.target.name;
     const value = event.target.checked;
-    const findName = this.skills.find(x => x['name'] === name);
+    const findName = this.data.find(x => x['name'] === name);
 
     if (findName['name'] === name && value === true) {
       this.dataRequest.push(findName);
